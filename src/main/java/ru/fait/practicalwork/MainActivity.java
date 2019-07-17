@@ -685,12 +685,6 @@ public class MainActivity extends javax.swing.JFrame {
                     continue;
                 }
                 String[] sa = buf.split(";");
-                /*
-                Debug:
-                System.out.println("--------------------");                
-                System.out.println(sa.length);
-                System.out.println("--------------------");
-                 */
                 row = new Vector();
                 for (int i = 0; i < num; i++) {
                     row.add(sa[i]);

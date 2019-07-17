@@ -186,67 +186,16 @@ public class OrdersRequestDialog extends javax.swing.JDialog {
     private void supFilterFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supFilterFieldActionPerformed
         // TODO add your handling code here:
         search();
-        /*if (cloneTable.isEmpty()) {
-            cloneTable = (Vector) newTable.clone();
-        }
-        Vector vectorClone = (Vector) cloneTable.clone();
-        if (supFilterField.getText().trim().replaceAll("\n", "").isEmpty()) {
-            requestTable.setModel(new DefaultTableModel(cloneTable, colNames));
-        } else {
-            for (int i = 0; i < cloneTable.size(); i++) {
-                Vector temp = (Vector) cloneTable.get(i);
-                if (!temp.get(6).toString().equalsIgnoreCase(supFilterField.getText())) {
-                    vectorClone.remove(temp);
-                }
-            }
-            cloneTable = (Vector) vectorClone.clone();
-        }
-
-        requestTable.setModel(new DefaultTableModel(cloneTable, colNames));*/
     }//GEN-LAST:event_supFilterFieldActionPerformed
 
     private void deliveryFilterFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliveryFilterFieldActionPerformed
         // TODO add your handling code here:
         search();
-        /*if (cloneTable.isEmpty()) {
-            cloneTable = (Vector) newTable.clone();
-        }
-        Vector vectorClone = (Vector) cloneTable.clone();
-        if (deliveryFilterField.getText().trim().replaceAll("\n", "").isEmpty()) {
-            requestTable.setModel(new DefaultTableModel(cloneTable, colNames));
-        } else {
-            for (int i = 0; i < cloneTable.size(); i++) {
-                Vector temp = (Vector) cloneTable.get(i);
-                if (!temp.get(8).toString().equalsIgnoreCase(deliveryFilterField.getText())) {
-                    vectorClone.remove(temp);
-                }
-            }
-            cloneTable = (Vector) vectorClone.clone();
-        }
-
-        requestTable.setModel(new DefaultTableModel(cloneTable, colNames));*/
     }//GEN-LAST:event_deliveryFilterFieldActionPerformed
 
     private void custFilterFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custFilterFieldActionPerformed
         // TODO add your handling code here:
         search();
-        /*if (cloneTable.isEmpty()) {
-            cloneTable = (Vector) newTable.clone();
-        }
-        Vector vectorClone = (Vector) cloneTable.clone();
-        if (custFilterField.getText().trim().replaceAll("\n", "").isEmpty()) {
-            requestTable.setModel(new DefaultTableModel(cloneTable, colNames));
-        } else {
-            for (int i = 0; i < cloneTable.size(); i++) {
-                Vector temp = (Vector) cloneTable.get(i);
-                if (!temp.get(7).toString().equalsIgnoreCase(custFilterField.getText())) {
-                    vectorClone.remove(temp);
-                }
-            }
-            cloneTable = (Vector) vectorClone.clone();
-        }
-
-        requestTable.setModel(new DefaultTableModel(cloneTable, colNames));*/
     }//GEN-LAST:event_custFilterFieldActionPerformed
 
     /**
@@ -319,45 +268,7 @@ public class OrdersRequestDialog extends javax.swing.JDialog {
                 
 
         }
-        /*if (supFilterField.getText().trim().replaceAll("\n", "").isEmpty()) {
-            requestTable.setModel(new DefaultTableModel(step1, colNames));
-        } else {
-            for (int i = 0; i < vectorClone.size(); i++) {
-                Vector temp = (Vector) vectorClone.get(i);
-                if (!temp.get(6).toString().equalsIgnoreCase(supFilterField.getText())) {
-                    copy.remove(temp);
-                }
-            }
-            System.out.println(copy);
-            vectorClone = (Vector) copy.clone();
-            step2 = (Vector) copy.clone();
         }
-        if (custFilterField.getText().trim().replaceAll("\n", "").isEmpty()) {
-            requestTable.setModel(new DefaultTableModel(step2, colNames));
-        }else{
-            for (int i = 0; i < copy.size(); i++) {
-                Vector temp = (Vector) copy.get(i);
-                if (!temp.get(7).toString().equalsIgnoreCase(custFilterField.getText())) {
-                    copy.remove(temp);
-                }
-            }
-            System.out.println(copy);
-            vectorClone = (Vector) copy.clone();
-            step3 = (Vector) copy.clone();
-        }
-        if (deliveryFilterField.getText().trim().replaceAll("\n", "").isEmpty()) {
-            requestTable.setModel(new DefaultTableModel(step3, colNames));
-        }else{
-            for (int i = 0; i < copy.size(); i++) {
-                Vector temp = (Vector) copy.get(i);
-                if (!temp.get(8).toString().equalsIgnoreCase(deliveryFilterField.getText())) {
-                    copy.remove(temp);
-                }
-            }
-            System.out.println(copy);
-            vectorClone = (Vector) copy.clone();
-        }
-        requestTable.setModel(new DefaultTableModel(vectorClone, colNames));*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

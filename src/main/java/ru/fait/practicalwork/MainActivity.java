@@ -40,6 +40,7 @@ public class MainActivity extends javax.swing.JFrame {
      */
     public MainActivity() {
         initComponents();
+        
         empColNames = new Vector<String>(Arrays.asList(strEmpColNames));
         DefaultTableModel employeesModel = new DefaultTableModel(empColNames, 0);
         employeesTable.setModel(employeesModel);

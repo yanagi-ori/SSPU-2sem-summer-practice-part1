@@ -122,7 +122,7 @@ public class HrdRequestDialog extends javax.swing.JDialog {
             }
             requestTable.setModel(copy);
         }
-        
+
 
         /*TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(((DefaultTableModel) requestTable.getModel())); 
         sorter.setRowFilter(RowFilter.regexFilter(filterField.getText()));

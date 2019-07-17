@@ -436,7 +436,7 @@ public class MainActivity extends javax.swing.JFrame {
             return;
         }
         File f = fc.getSelectedFile();
-        fillTable(f, custColNames.size(), custColNames, customersTable);
+        fillTable(f, custColNames, customersTable);
     }//GEN-LAST:event_openCustomersTableItemActionPerformed
 
     private void openEmployeesTableMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openEmployeesTableMenuItemActionPerformed
@@ -460,7 +460,7 @@ public class MainActivity extends javax.swing.JFrame {
             return;
         }
         File f = fc.getSelectedFile();
-        fillTable(f, empColNames.size(), empColNames, employeesTable);
+        fillTable(f, empColNames, employeesTable);
     }//GEN-LAST:event_openEmployeesTableMenuItemActionPerformed
 
     private void openStockMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openStockMenuItemActionPerformed
@@ -484,7 +484,7 @@ public class MainActivity extends javax.swing.JFrame {
             return;
         }
         File f = fc.getSelectedFile();
-        fillTable(f, stockColNames.size(), stockColNames, stockTable);
+        fillTable(f, stockColNames, stockTable);
     }//GEN-LAST:event_openStockMenuItemActionPerformed
 
     private void openGoodsTableMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openGoodsTableMenuItemActionPerformed
@@ -508,7 +508,7 @@ public class MainActivity extends javax.swing.JFrame {
             return;
         }
         File f = fc.getSelectedFile();
-        fillTable(f, goodsColNames.size(), goodsColNames, goodsTable);
+        fillTable(f, goodsColNames, goodsTable);
     }//GEN-LAST:event_openGoodsTableMenuItemActionPerformed
 
     private void hrdMenuRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hrdMenuRequestActionPerformed
@@ -546,7 +546,7 @@ public class MainActivity extends javax.swing.JFrame {
             return;
         }
         File f = fc.getSelectedFile();
-        fillTable(f, posColNames.size(), posColNames, positionsTable);
+        fillTable(f, posColNames, positionsTable);
     }//GEN-LAST:event_openPositionsMenuItemActionPerformed
 
     private void openSuppliersMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openSuppliersMenuItemActionPerformed
@@ -570,7 +570,7 @@ public class MainActivity extends javax.swing.JFrame {
             return;
         }
         File f = fc.getSelectedFile();
-        fillTable(f, supColNames.size(), supColNames, suppliersTable);
+        fillTable(f, supColNames, suppliersTable);
     }//GEN-LAST:event_openSuppliersMenuItemActionPerformed
 
     private void openTOGMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openTOGMenuItemActionPerformed
@@ -594,7 +594,7 @@ public class MainActivity extends javax.swing.JFrame {
             return;
         }
         File f = fc.getSelectedFile();
-        fillTable(f, togColNames.size(), togColNames, togTable);
+        fillTable(f, togColNames, togTable);
     }//GEN-LAST:event_openTOGMenuItemActionPerformed
 
     private void supListMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supListMenuItem4ActionPerformed
@@ -671,7 +671,7 @@ public class MainActivity extends javax.swing.JFrame {
         });
     }
 
-    private void fillTable(File f, int num, Vector<String> thisColNames, javax.swing.JTable table) {
+    private void fillTable(File f, Vector<String> thisColNames, javax.swing.JTable table) {
         InputStreamReader ir = null;
         BufferedReader br = null;
         try {
@@ -687,7 +687,7 @@ public class MainActivity extends javax.swing.JFrame {
                 }
                 String[] sa = buf.split(";");
                 row = new Vector();
-                for (int i = 0; i < num; i++) {
+                for (int i = 0; i < thisColNames.size(); i++) {
                     row.add(sa[i]);
                 }
                 data.add(row);

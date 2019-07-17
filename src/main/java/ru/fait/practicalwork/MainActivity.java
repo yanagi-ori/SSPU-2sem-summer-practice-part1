@@ -68,6 +68,29 @@ public class MainActivity extends javax.swing.JFrame {
         stockColNames = new Vector<String>(Arrays.asList(strStockColNames));
         DefaultTableModel stockModel = new DefaultTableModel(stockColNames, 0);
         stockTable.setModel(stockModel);
+        
+        
+        if (new File("employees.txt").exists()){
+            fillTable(new File("employees.txt"), empColNames, employeesTable);
+        }
+        if (new File("positions.txt").exists()){
+            fillTable(new File("positions.txt"),  posColNames, positionsTable);
+        }
+        if (new File("goods.txt").exists()){
+            fillTable(new File("goods.txt"), goodsColNames, goodsTable);
+        }
+        if (new File("types_of_goods.txt").exists()){
+            fillTable(new File("types_of_goods.txt"),  togColNames, togTable);
+        }
+        if (new File("suppliers.txt").exists()){
+            fillTable(new File("suppliers.txt"), supColNames, suppliersTable);
+        }
+        if (new File("customers.txt").exists()){
+            fillTable(new File("customers.txt"), custColNames, customersTable);
+        }
+        if (new File("stock.txt").exists()){
+            fillTable(new File("stock.txt"), stockColNames, stockTable);
+        }
     }
 
     /**

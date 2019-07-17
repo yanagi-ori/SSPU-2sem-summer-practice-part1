@@ -242,32 +242,21 @@ public class OrdersRequestDialog extends javax.swing.JDialog {
     }
 
     void search() {
-        Vector vectorClone = (Vector) newTable.clone();
         Vector copy = (Vector) newTable.clone();
-        Vector step1 = (Vector) newTable.clone();
-        Vector step2 = (Vector) newTable.clone();
-        Vector step3 = (Vector) newTable.clone();
-        System.out.println("--------------");
-
         for (int i = 0; i < newTable.size(); i++) {
-            Vector temp = (Vector) vectorClone.get(i);
+            Vector temp = (Vector) newTable.get(i);
             if (!supFilterField.getText().trim().replaceAll("\n", "").isEmpty()
                     && !temp.get(6).toString().equalsIgnoreCase(supFilterField.getText())) {
                 copy.remove(temp);
-            }
-            else if(!custFilterField.getText().trim().replaceAll("\n", "").isEmpty()
-                    && !temp.get(7).toString().equalsIgnoreCase(custFilterField.getText())){
+            } else if (!custFilterField.getText().trim().replaceAll("\n", "").isEmpty()
+                    && !temp.get(7).toString().equalsIgnoreCase(custFilterField.getText())) {
                 copy.remove(temp);
-            }
-            else if(!deliveryFilterField.getText().trim().replaceAll("\n", "").isEmpty()
-                    && !temp.get(8).toString().equalsIgnoreCase(deliveryFilterField.getText())){
+            } else if (!deliveryFilterField.getText().trim().replaceAll("\n", "").isEmpty()
+                    && !temp.get(8).toString().equalsIgnoreCase(deliveryFilterField.getText())) {
                 copy.remove(temp);
+            } else {
             }
-            else {}
-        requestTable.setModel(new DefaultTableModel(copy, colNames));
-                
-
-        }
+            requestTable.setModel(new DefaultTableModel(copy, colNames));
         }
     }
 

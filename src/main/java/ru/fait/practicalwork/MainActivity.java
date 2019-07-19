@@ -3,9 +3,9 @@ package ru.fait.practicalwork;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Vector;
 import javax.swing.JFileChooser;
@@ -34,13 +34,20 @@ public class MainActivity extends javax.swing.JFrame {
     Vector<String> supColNames;
     Vector<String> custColNames;
     Vector<String> stockColNames;
+    static File empPath;
+    static File posPath;
+    static File goodsPath;
+    static File togPath;
+    static File supPath;
+    static File cusPath;
+    static File stockPath;
 
     /**
      * Creates new form MainActivity
      */
     public MainActivity() {
         initComponents();
-        
+
         empColNames = new Vector<String>(Arrays.asList(strEmpColNames));
         DefaultTableModel employeesModel = new DefaultTableModel(empColNames, 0);
         employeesTable.setModel(employeesModel);
@@ -68,28 +75,34 @@ public class MainActivity extends javax.swing.JFrame {
         stockColNames = new Vector<String>(Arrays.asList(strStockColNames));
         DefaultTableModel stockModel = new DefaultTableModel(stockColNames, 0);
         stockTable.setModel(stockModel);
-        
-        
-        if (new File("employees.txt").exists()){
-            fillTable(new File("employees.txt"), empColNames, employeesTable);
+
+        if (new File("employees.txt").exists()) {
+            empPath = new File("employees.txt");
+            fillTable(empPath, empColNames, employeesTable);
         }
-        if (new File("positions.txt").exists()){
-            fillTable(new File("positions.txt"),  posColNames, positionsTable);
+        if (new File("positions.txt").exists()) {
+            posPath = new File("positions.txt");
+            fillTable(posPath, posColNames, positionsTable);
         }
-        if (new File("goods.txt").exists()){
-            fillTable(new File("goods.txt"), goodsColNames, goodsTable);
+        if (new File("goods.txt").exists()) {
+            goodsPath = new File("goods.txt");
+            fillTable(goodsPath, goodsColNames, goodsTable);
         }
-        if (new File("types_of_goods.txt").exists()){
-            fillTable(new File("types_of_goods.txt"),  togColNames, togTable);
+        if (new File("types_of_goods.txt").exists()) {
+            togPath = new File("types_of_goods.txt");
+            fillTable(togPath, togColNames, togTable);
         }
-        if (new File("suppliers.txt").exists()){
-            fillTable(new File("suppliers.txt"), supColNames, suppliersTable);
+        if (new File("suppliers.txt").exists()) {
+            supPath = new File("suppliers.txt");
+            fillTable(supPath, supColNames, suppliersTable);
         }
-        if (new File("customers.txt").exists()){
-            fillTable(new File("customers.txt"), custColNames, customersTable);
+        if (new File("customers.txt").exists()) {
+            cusPath = new File("customers.txt");
+            fillTable(cusPath, custColNames, customersTable);
         }
-        if (new File("stock.txt").exists()){
-            fillTable(new File("stock.txt"), stockColNames, stockTable);
+        if (new File("stock.txt").exists()) {
+            stockPath = new File("stock.txt");
+            fillTable(stockPath, stockColNames, stockTable);
         }
     }
 
@@ -104,28 +117,72 @@ public class MainActivity extends javax.swing.JFrame {
 
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jFrame1 = new javax.swing.JFrame();
+        jFrame2 = new javax.swing.JFrame();
         Tabs = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        empAddButton = new javax.swing.JButton();
+        empEditButton = new javax.swing.JButton();
+        empDeleteButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         employeesTable = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        posAddButton = new javax.swing.JButton();
+        posEditButton = new javax.swing.JButton();
+        posDeleteButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         positionsTable = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        goodsAddButton = new javax.swing.JButton();
+        goodsEditButton = new javax.swing.JButton();
+        goodsDeleteButton = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         goodsTable = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         togTable = new javax.swing.JTable();
+        jPanel13 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        togAddButton = new javax.swing.JButton();
+        togEditButton = new javax.swing.JButton();
+        togDeleteButton = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         suppliersTable = new javax.swing.JTable();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        supAddButton = new javax.swing.JButton();
+        supEditButton = new javax.swing.JButton();
+        supDeleteButton = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         customersTable = new javax.swing.JTable();
+        jPanel15 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        custAddButton = new javax.swing.JButton();
+        custEditButton = new javax.swing.JButton();
+        custDeleteButton = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         stockTable = new javax.swing.JTable();
+        jPanel16 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        stockAddButton = new javax.swing.JButton();
+        stockEditButton = new javax.swing.JButton();
+        stockDeleteButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -147,7 +204,85 @@ public class MainActivity extends javax.swing.JFrame {
 
         jMenuItem5.setText("jMenuItem5");
 
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jFrame2Layout = new javax.swing.GroupLayout(jFrame2.getContentPane());
+        jFrame2.getContentPane().setLayout(jFrame2Layout);
+        jFrame2Layout.setHorizontalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame2Layout.setVerticalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Редактирование");
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Таблицы");
+
+        empAddButton.setText("Добавить");
+        empAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                empAddButtonActionPerformed(evt);
+            }
+        });
+
+        empEditButton.setText("Редактировать");
+        empEditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                empEditButtonActionPerformed(evt);
+            }
+        });
+
+        empDeleteButton.setText("Удалить");
+        empDeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                empDeleteButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(empAddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(empDeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(empEditButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel2)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(empAddButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(empEditButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(empDeleteButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         employeesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -163,14 +298,69 @@ public class MainActivity extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         Tabs.addTab("Сотрудники", jPanel1);
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Редактирование");
+
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Таблицы");
+
+        posAddButton.setText("Добавить");
+        posAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                posAddButtonActionPerformed(evt);
+            }
+        });
+
+        posEditButton.setText("Редактировать");
+        posEditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                posEditButtonActionPerformed(evt);
+            }
+        });
+
+        posDeleteButton.setText("Удалить");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(posAddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(posDeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(posEditButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel8)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(posAddButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(posEditButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(posDeleteButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         positionsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -186,14 +376,69 @@ public class MainActivity extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE)
+                .addGap(9, 9, 9)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
         );
 
         Tabs.addTab("Должности", jPanel2);
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Редактирование");
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Таблицы");
+
+        goodsAddButton.setText("Добавить");
+        goodsAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goodsAddButtonActionPerformed(evt);
+            }
+        });
+
+        goodsEditButton.setText("Редактировать");
+        goodsEditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goodsEditButtonActionPerformed(evt);
+            }
+        });
+
+        goodsDeleteButton.setText("Удалить");
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(goodsAddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(goodsDeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(goodsEditButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel6)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(goodsAddButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(goodsEditButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(goodsDeleteButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         goodsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -209,11 +454,15 @@ public class MainActivity extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE)
+                .addGap(9, 9, 9)
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
         );
 
         Tabs.addTab("Товары", jPanel3);
@@ -228,15 +477,70 @@ public class MainActivity extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(togTable);
 
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("Редактирование");
+
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setText("Таблицы");
+
+        togAddButton.setText("Добавить");
+        togAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                togAddButtonActionPerformed(evt);
+            }
+        });
+
+        togEditButton.setText("Редактировать");
+        togEditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                togEditButtonActionPerformed(evt);
+            }
+        });
+
+        togDeleteButton.setText("Удалить");
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(togAddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(togDeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(togEditButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel18)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(togAddButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(togEditButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(togDeleteButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE)
+                .addGap(9, 9, 9)
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         Tabs.addTab("Типы товаров", jPanel4);
@@ -251,15 +555,70 @@ public class MainActivity extends javax.swing.JFrame {
         ));
         jScrollPane5.setViewportView(suppliersTable);
 
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("Редактирование");
+
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("Таблицы");
+
+        supAddButton.setText("Добавить");
+        supAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supAddButtonActionPerformed(evt);
+            }
+        });
+
+        supEditButton.setText("Редактировать");
+        supEditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supEditButtonActionPerformed(evt);
+            }
+        });
+
+        supDeleteButton.setText("Удалить");
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(supAddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(supDeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(supEditButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel20)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(supAddButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(supEditButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(supDeleteButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE)
+                .addGap(9, 9, 9)
+                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         Tabs.addTab("Поставщики", jPanel5);
@@ -274,15 +633,70 @@ public class MainActivity extends javax.swing.JFrame {
         ));
         jScrollPane6.setViewportView(customersTable);
 
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("Редактирование");
+
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("Таблицы");
+
+        custAddButton.setText("Добавить");
+        custAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                custAddButtonActionPerformed(evt);
+            }
+        });
+
+        custEditButton.setText("Редактировать");
+        custEditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                custEditButtonActionPerformed(evt);
+            }
+        });
+
+        custDeleteButton.setText("Удалить");
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(custAddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(custDeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(custEditButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel22)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(custAddButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(custEditButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(custDeleteButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE)
+                .addGap(9, 9, 9)
+                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         Tabs.addTab("Заказчики", jPanel6);
@@ -297,15 +711,70 @@ public class MainActivity extends javax.swing.JFrame {
         ));
         jScrollPane7.setViewportView(stockTable);
 
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("Редактирование");
+
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel25.setText("Таблицы");
+
+        stockAddButton.setText("Добавить");
+        stockAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stockAddButtonActionPerformed(evt);
+            }
+        });
+
+        stockEditButton.setText("Редактировать");
+        stockEditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stockEditButtonActionPerformed(evt);
+            }
+        });
+
+        stockDeleteButton.setText("Удалить");
+
+        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
+        jPanel16.setLayout(jPanel16Layout);
+        jPanel16Layout.setHorizontalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(stockAddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(stockDeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(stockEditButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel16Layout.setVerticalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel24)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(stockAddButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stockEditButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stockDeleteButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE)
+                .addGap(9, 9, 9)
+                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+            .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         Tabs.addTab("Склад", jPanel7);
@@ -319,7 +788,7 @@ public class MainActivity extends javax.swing.JFrame {
             }
         });
 
-        openEmployeesTableMenuItem.setText("Открыть таблицу  сотрудников");
+        openEmployeesTableMenuItem.setText("Открыть таблицу сотрудников");
         openEmployeesTableMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 openEmployeesTableMenuItemActionPerformed(evt);
@@ -458,8 +927,8 @@ public class MainActivity extends javax.swing.JFrame {
         if (fc.showOpenDialog(null) != JFileChooser.APPROVE_OPTION) {
             return;
         }
-        File f = fc.getSelectedFile();
-        fillTable(f, custColNames, customersTable);
+        cusPath = fc.getSelectedFile();
+        fillTable(cusPath, custColNames, customersTable);
     }//GEN-LAST:event_openCustomersTableItemActionPerformed
 
     private void openEmployeesTableMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openEmployeesTableMenuItemActionPerformed
@@ -482,8 +951,8 @@ public class MainActivity extends javax.swing.JFrame {
         if (fc.showOpenDialog(null) != JFileChooser.APPROVE_OPTION) {
             return;
         }
-        File f = fc.getSelectedFile();
-        fillTable(f, empColNames, employeesTable);
+        File empPath = fc.getSelectedFile();
+        fillTable(empPath, empColNames, employeesTable);
     }//GEN-LAST:event_openEmployeesTableMenuItemActionPerformed
 
     private void openStockMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openStockMenuItemActionPerformed
@@ -506,8 +975,8 @@ public class MainActivity extends javax.swing.JFrame {
         if (fc.showOpenDialog(null) != JFileChooser.APPROVE_OPTION) {
             return;
         }
-        File f = fc.getSelectedFile();
-        fillTable(f, stockColNames, stockTable);
+        stockPath = fc.getSelectedFile();
+        fillTable(stockPath, stockColNames, stockTable);
     }//GEN-LAST:event_openStockMenuItemActionPerformed
 
     private void openGoodsTableMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openGoodsTableMenuItemActionPerformed
@@ -530,8 +999,8 @@ public class MainActivity extends javax.swing.JFrame {
         if (fc.showOpenDialog(null) != JFileChooser.APPROVE_OPTION) {
             return;
         }
-        File f = fc.getSelectedFile();
-        fillTable(f, goodsColNames, goodsTable);
+        goodsPath = fc.getSelectedFile();
+        fillTable(goodsPath, goodsColNames, goodsTable);
     }//GEN-LAST:event_openGoodsTableMenuItemActionPerformed
 
     private void hrdMenuRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hrdMenuRequestActionPerformed
@@ -568,8 +1037,8 @@ public class MainActivity extends javax.swing.JFrame {
         if (fc.showOpenDialog(null) != JFileChooser.APPROVE_OPTION) {
             return;
         }
-        File f = fc.getSelectedFile();
-        fillTable(f, posColNames, positionsTable);
+        posPath = fc.getSelectedFile();
+        fillTable(posPath, posColNames, positionsTable);
     }//GEN-LAST:event_openPositionsMenuItemActionPerformed
 
     private void openSuppliersMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openSuppliersMenuItemActionPerformed
@@ -592,8 +1061,8 @@ public class MainActivity extends javax.swing.JFrame {
         if (fc.showOpenDialog(null) != JFileChooser.APPROVE_OPTION) {
             return;
         }
-        File f = fc.getSelectedFile();
-        fillTable(f, supColNames, suppliersTable);
+        supPath = fc.getSelectedFile();
+        fillTable(supPath, supColNames, suppliersTable);
     }//GEN-LAST:event_openSuppliersMenuItemActionPerformed
 
     private void openTOGMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openTOGMenuItemActionPerformed
@@ -616,8 +1085,8 @@ public class MainActivity extends javax.swing.JFrame {
         if (fc.showOpenDialog(null) != JFileChooser.APPROVE_OPTION) {
             return;
         }
-        File f = fc.getSelectedFile();
-        fillTable(f, togColNames, togTable);
+        togPath = fc.getSelectedFile();
+        fillTable(togPath, togColNames, togTable);
     }//GEN-LAST:event_openTOGMenuItemActionPerformed
 
     private void supListMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supListMenuItem4ActionPerformed
@@ -656,6 +1125,79 @@ public class MainActivity extends javax.swing.JFrame {
         GoodsRequestDialog rd = new GoodsRequestDialog(this, true, tm1.getDataVector(), tm2.getDataVector());
         rd.setVisible(true);
     }//GEN-LAST:event_goodsListMenuRequestActionPerformed
+
+    private void goodsEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goodsEditButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_goodsEditButtonActionPerformed
+
+    private void goodsAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goodsAddButtonActionPerformed
+        // TODO add your handling code here:
+        PosOperationDialog ad = new PosOperationDialog(this, true);
+        ad.setVisible(true);
+        add(goodsPath, ad.get());
+        fillTable(goodsPath, goodsColNames, goodsTable);
+    }//GEN-LAST:event_goodsAddButtonActionPerformed
+
+    private void posEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posEditButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_posEditButtonActionPerformed
+
+    private void posAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posAddButtonActionPerformed
+        // TODO add your handling code here:
+        PosOperationDialog ad = new PosOperationDialog(this, true);
+        ad.setVisible(true);
+        add(posPath, ad.get());
+        fillTable(posPath, posColNames, positionsTable);
+    }//GEN-LAST:event_posAddButtonActionPerformed
+
+    private void empEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empEditButtonActionPerformed
+        // TODO add your handling code here:
+        System.out.println(employeesTable.getComponentAt(employeesTable.getSelectedRow(), employeesTable.getSelectedColumn()));
+    }//GEN-LAST:event_empEditButtonActionPerformed
+
+    private void empAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empAddButtonActionPerformed
+        // TODO add your handling code here:
+        EmpOperationDialog ad = new EmpOperationDialog(this, true);
+        ad.setVisible(true);
+        add(empPath, ad.get());
+        fillTable(empPath, empColNames, employeesTable);
+    }//GEN-LAST:event_empAddButtonActionPerformed
+
+    private void togAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togAddButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_togAddButtonActionPerformed
+
+    private void togEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togEditButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_togEditButtonActionPerformed
+
+    private void supAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supAddButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_supAddButtonActionPerformed
+
+    private void supEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supEditButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_supEditButtonActionPerformed
+
+    private void custAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custAddButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_custAddButtonActionPerformed
+
+    private void custEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custEditButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_custEditButtonActionPerformed
+
+    private void stockAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockAddButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stockAddButtonActionPerformed
+
+    private void stockEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockEditButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stockEditButtonActionPerformed
+
+    private void empDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empDeleteButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_empDeleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -701,7 +1243,6 @@ public class MainActivity extends javax.swing.JFrame {
             ir = new InputStreamReader(new FileInputStream(f), "UTF8");
             br = new BufferedReader(ir);
             String buf;
-            NumberFormat nf = NumberFormat.getNumberInstance();
             Vector data = new Vector();
             Vector row;
             while ((buf = br.readLine()) != null) {
@@ -714,8 +1255,7 @@ public class MainActivity extends javax.swing.JFrame {
                     row.add(sa[i]);
                 }
                 data.add(row);
-                DefaultTableModel tm = new DefaultTableModel(data, thisColNames);
-                table.setModel(tm);
+                table.setModel(new DefaultTableModel(data, thisColNames));
             }
         } catch (IOException ex) {
             System.out.println(ex);
@@ -728,27 +1268,69 @@ public class MainActivity extends javax.swing.JFrame {
         }
     }
 
+    public void add(File path, Vector addition) {
+        try (FileWriter writer = new FileWriter(path, true)) {
+            writer.append("\n");
+            writer.write(String.join(";", addition));
+            writer.flush();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane Tabs;
+    private javax.swing.JButton custAddButton;
+    private javax.swing.JButton custDeleteButton;
+    private javax.swing.JButton custEditButton;
     private javax.swing.JMenuItem custListMenuRequest;
     public javax.swing.JTable customersTable;
+    private javax.swing.JButton empAddButton;
+    private javax.swing.JButton empDeleteButton;
+    private javax.swing.JButton empEditButton;
     public javax.swing.JTable employeesTable;
+    private javax.swing.JButton goodsAddButton;
+    private javax.swing.JButton goodsDeleteButton;
+    private javax.swing.JButton goodsEditButton;
     private javax.swing.JMenuItem goodsListMenuRequest;
     public javax.swing.JTable goodsTable;
     private javax.swing.JMenuItem hrdMenuRequest;
+    private javax.swing.JFrame jFrame1;
+    private javax.swing.JFrame jFrame2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -764,10 +1346,22 @@ public class MainActivity extends javax.swing.JFrame {
     private javax.swing.JMenuItem openSuppliersMenuItem;
     private javax.swing.JMenuItem openTOGMenuItem;
     private javax.swing.JMenuItem ordersMenuRequest;
+    private javax.swing.JButton posAddButton;
+    private javax.swing.JButton posDeleteButton;
+    private javax.swing.JButton posEditButton;
     public javax.swing.JTable positionsTable;
+    private javax.swing.JButton stockAddButton;
+    private javax.swing.JButton stockDeleteButton;
+    private javax.swing.JButton stockEditButton;
     public javax.swing.JTable stockTable;
+    private javax.swing.JButton supAddButton;
+    private javax.swing.JButton supDeleteButton;
+    private javax.swing.JButton supEditButton;
     private javax.swing.JMenuItem supListMenuItem4;
     public javax.swing.JTable suppliersTable;
+    private javax.swing.JButton togAddButton;
+    private javax.swing.JButton togDeleteButton;
+    private javax.swing.JButton togEditButton;
     public javax.swing.JTable togTable;
     // End of variables declaration//GEN-END:variables
 }

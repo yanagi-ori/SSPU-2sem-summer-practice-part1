@@ -39,8 +39,7 @@ public class HrdRequestDialog extends javax.swing.JDialog {
                 }
             }
         }
-        DefaultTableModel tm = new DefaultTableModel(newTable, colNames);
-        requestTable.setModel(tm);
+        requestTable.setModel(new DefaultTableModel(newTable, colNames));
         System.out.println(newTable.toString());
 
     }

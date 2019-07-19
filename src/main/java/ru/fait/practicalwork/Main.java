@@ -1,14 +1,24 @@
 package ru.fait.practicalwork;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.Scanner;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileFilter;
@@ -17,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
 /**
  * @author Богатырев Иван
  */
-public class MainActivity extends javax.swing.JFrame {
+public class Main extends javax.swing.JFrame {
 
     final static String[] strEmpColNames = {"Код сотрудника", "ФИО", "Возраст", "Пол", "Адрес", "Телефон", "Паспортные данные", "Код должности"};
     final static String[] strPosColNames = {"Код должности", "Наименование должности", "Оклад", "Обязанности", "Требования"};
@@ -41,11 +51,12 @@ public class MainActivity extends javax.swing.JFrame {
     File supPath;
     File cusPath;
     File stockPath;
+    int rowIndex;
 
     /**
      * Creates new form MainActivity
      */
-    public MainActivity() {
+    public Main() {
         initComponents();
 
         empColNames = new Vector<String>(Arrays.asList(strEmpColNames));
@@ -292,6 +303,11 @@ public class MainActivity extends javax.swing.JFrame {
                 "Код сотрудника", "ФИО", "Возраст", "Пол", "Адрес", "Телефон", "Паспортные данные", "Код должности"
             }
         ));
+        employeesTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                employeesTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(employeesTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -332,6 +348,11 @@ public class MainActivity extends javax.swing.JFrame {
         });
 
         posDeleteButton.setText("Удалить");
+        posDeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                posDeleteButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -370,6 +391,11 @@ public class MainActivity extends javax.swing.JFrame {
                 "Код должности", "Наименование должности", "Оклад", "Обязанности", "Требования"
             }
         ));
+        positionsTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                positionsTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(positionsTable);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -410,6 +436,11 @@ public class MainActivity extends javax.swing.JFrame {
         });
 
         goodsDeleteButton.setText("Удалить");
+        goodsDeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goodsDeleteButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -448,6 +479,11 @@ public class MainActivity extends javax.swing.JFrame {
                 "Код товара", "Код типа", "Производитель", "Наименование", "Условия хранения", "Упаковка", "Срок годности"
             }
         ));
+        goodsTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                goodsTableMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(goodsTable);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -475,6 +511,11 @@ public class MainActivity extends javax.swing.JFrame {
                 "Код типа", "Наименование", "Описание", "Особенности"
             }
         ));
+        togTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                togTableMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(togTable);
 
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -498,6 +539,11 @@ public class MainActivity extends javax.swing.JFrame {
         });
 
         togDeleteButton.setText("Удалить");
+        togDeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                togDeleteButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -553,6 +599,11 @@ public class MainActivity extends javax.swing.JFrame {
                 "Код поставщика", "Наименование", "Адрес", "Телефон", "Код поставляемого товара 1", "Код поставляемого товара 2", "Код поставляемого товара 3"
             }
         ));
+        suppliersTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                suppliersTableMouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(suppliersTable);
 
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -576,6 +627,11 @@ public class MainActivity extends javax.swing.JFrame {
         });
 
         supDeleteButton.setText("Удалить");
+        supDeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supDeleteButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -631,6 +687,11 @@ public class MainActivity extends javax.swing.JFrame {
                 "Код заказчика", "Наименование", "Адрес", "Телефон", "Код потребляемого товара 1", "Код потребляемого товара 2", "Код потребляемого товара 3"
             }
         ));
+        customersTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                customersTableMouseClicked(evt);
+            }
+        });
         jScrollPane6.setViewportView(customersTable);
 
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -654,6 +715,11 @@ public class MainActivity extends javax.swing.JFrame {
         });
 
         custDeleteButton.setText("Удалить");
+        custDeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                custDeleteButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -709,6 +775,11 @@ public class MainActivity extends javax.swing.JFrame {
                 "Дата поступления", "Дата заказа", "Дата отпраки", "Код товара", "Код поставщика", "Код заказчика", "Способ доставки", "Объем", "Цена", "Код сотрудника"
             }
         ));
+        stockTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                stockTableMouseClicked(evt);
+            }
+        });
         jScrollPane7.setViewportView(stockTable);
 
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -732,6 +803,11 @@ public class MainActivity extends javax.swing.JFrame {
         });
 
         stockDeleteButton.setText("Удалить");
+        stockDeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stockDeleteButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -1128,6 +1204,15 @@ public class MainActivity extends javax.swing.JFrame {
 
     private void goodsEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goodsEditButtonActionPerformed
         // TODO add your handling code here:
+        if (rowIndex != -1) {
+            StockOperationDialog ed = new StockOperationDialog(this, true);
+            ed.setVisible(true);
+            if (!ed.get().isEmpty()) {
+                insert(goodsPath, ed.get(), rowIndex);
+                fillTable(goodsPath, goodsColNames, goodsTable);
+            }
+        }
+        rowIndex = -1;
     }//GEN-LAST:event_goodsEditButtonActionPerformed
 
     private void goodsAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goodsAddButtonActionPerformed
@@ -1140,6 +1225,15 @@ public class MainActivity extends javax.swing.JFrame {
 
     private void posEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posEditButtonActionPerformed
         // TODO add your handling code here:
+        if (rowIndex != -1) {
+            StockOperationDialog ed = new StockOperationDialog(this, true);
+            ed.setVisible(true);
+            if (!ed.get().isEmpty()) {
+                insert(posPath, ed.get(), rowIndex);
+                fillTable(posPath, posColNames, positionsTable);
+            }
+        }
+        rowIndex = -1;
     }//GEN-LAST:event_posEditButtonActionPerformed
 
     private void posAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posAddButtonActionPerformed
@@ -1152,7 +1246,15 @@ public class MainActivity extends javax.swing.JFrame {
 
     private void empEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empEditButtonActionPerformed
         // TODO add your handling code here:
-        System.out.println(employeesTable.getComponentAt(employeesTable.getSelectedRow(), employeesTable.getSelectedColumn()));
+        if (rowIndex != -1) {
+            StockOperationDialog ed = new StockOperationDialog(this, true);
+            ed.setVisible(true);
+            if (!ed.get().isEmpty()) {
+                insert(empPath, ed.get(), rowIndex);
+                fillTable(empPath, empColNames, employeesTable);
+            }
+        }
+        rowIndex = -1;
     }//GEN-LAST:event_empEditButtonActionPerformed
 
     private void empAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empAddButtonActionPerformed
@@ -1173,10 +1275,18 @@ public class MainActivity extends javax.swing.JFrame {
 
     private void togEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togEditButtonActionPerformed
         // TODO add your handling code here:
+        if (rowIndex != -1) {
+            StockOperationDialog ed = new StockOperationDialog(this, true);
+            ed.setVisible(true);
+            if (!ed.get().isEmpty()) {
+                insert(togPath, ed.get(), rowIndex);
+                fillTable(togPath, togColNames, togTable);
+            }
+        }
+        rowIndex = -1;
     }//GEN-LAST:event_togEditButtonActionPerformed
 
     private void supAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supAddButtonActionPerformed
-        // TODO add your handling code here:
         PosOperationDialog ad = new PosOperationDialog(this, true);
         ad.setVisible(true);
         add(supPath, ad.get());
@@ -1184,11 +1294,18 @@ public class MainActivity extends javax.swing.JFrame {
     }//GEN-LAST:event_supAddButtonActionPerformed
 
     private void supEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supEditButtonActionPerformed
-        // TODO add your handling code here:
+        if (rowIndex != -1) {
+            StockOperationDialog ed = new StockOperationDialog(this, true);
+            ed.setVisible(true);
+            if (!ed.get().isEmpty()) {
+                insert(supPath, ed.get(), rowIndex);
+                fillTable(supPath, supColNames, suppliersTable);
+            }
+        }
+        rowIndex = -1;
     }//GEN-LAST:event_supEditButtonActionPerformed
 
     private void custAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custAddButtonActionPerformed
-        // TODO add your handling code here:
         PosOperationDialog ad = new PosOperationDialog(this, true);
         ad.setVisible(true);
         add(cusPath, ad.get());
@@ -1196,11 +1313,18 @@ public class MainActivity extends javax.swing.JFrame {
     }//GEN-LAST:event_custAddButtonActionPerformed
 
     private void custEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custEditButtonActionPerformed
-        // TODO add your handling code here:
+        if (rowIndex != -1) {
+            StockOperationDialog ed = new StockOperationDialog(this, true);
+            ed.setVisible(true);
+            if (!ed.get().isEmpty()) {
+                insert(cusPath, ed.get(), rowIndex);
+                fillTable(cusPath, custColNames, customersTable);
+            }
+        }
+        rowIndex = -1;
     }//GEN-LAST:event_custEditButtonActionPerformed
 
     private void stockAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockAddButtonActionPerformed
-        // TODO add your handling code here:
         PosOperationDialog ad = new PosOperationDialog(this, true);
         ad.setVisible(true);
         add(stockPath, ad.get());
@@ -1208,12 +1332,107 @@ public class MainActivity extends javax.swing.JFrame {
     }//GEN-LAST:event_stockAddButtonActionPerformed
 
     private void stockEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockEditButtonActionPerformed
-        // TODO add your handling code here:
+        if (rowIndex != -1) {
+            StockOperationDialog ed = new StockOperationDialog(this, true);
+            ed.setVisible(true);
+            if (!ed.get().isEmpty()) {
+                insert(stockPath, ed.get(), rowIndex);
+                fillTable(stockPath, stockColNames, stockTable);
+            }
+        }
+        rowIndex = -1;
     }//GEN-LAST:event_stockEditButtonActionPerformed
 
     private void empDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empDeleteButtonActionPerformed
-        // TODO add your handling code here:
+        if (rowIndex != -1) {
+            delete(empPath, rowIndex);
+            fillTable(empPath, empColNames, employeesTable);
+        }
+        rowIndex = -1;
     }//GEN-LAST:event_empDeleteButtonActionPerformed
+
+    private void stockTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stockTableMouseClicked
+        rowIndex = stockTable.getSelectedRow();
+    }//GEN-LAST:event_stockTableMouseClicked
+
+    private void employeesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeesTableMouseClicked
+        // TODO add your handling code here:
+        rowIndex = employeesTable.getSelectedRow();
+    }//GEN-LAST:event_employeesTableMouseClicked
+
+    private void positionsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_positionsTableMouseClicked
+        // TODO add your handling code here:
+        rowIndex = positionsTable.getSelectedRow();
+    }//GEN-LAST:event_positionsTableMouseClicked
+
+    private void goodsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goodsTableMouseClicked
+        // TODO add your handling code here:
+        rowIndex = goodsTable.getSelectedRow();
+    }//GEN-LAST:event_goodsTableMouseClicked
+
+    private void togTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_togTableMouseClicked
+        // TODO add your handling code here:
+        rowIndex = togTable.getSelectedRow();
+    }//GEN-LAST:event_togTableMouseClicked
+
+    private void suppliersTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_suppliersTableMouseClicked
+        // TODO add your handling code here:
+        rowIndex = suppliersTable.getSelectedRow();
+    }//GEN-LAST:event_suppliersTableMouseClicked
+
+    private void customersTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customersTableMouseClicked
+        // TODO add your handling code here:
+        rowIndex = customersTable.getSelectedRow();
+    }//GEN-LAST:event_customersTableMouseClicked
+
+    private void posDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posDeleteButtonActionPerformed
+        // TODO add your handling code here:
+        if (rowIndex != -1) {
+            delete(posPath, rowIndex);
+            fillTable(posPath, posColNames, positionsTable);
+        }
+        rowIndex = -1;
+    }//GEN-LAST:event_posDeleteButtonActionPerformed
+
+    private void goodsDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goodsDeleteButtonActionPerformed
+        if (rowIndex != -1) {
+            delete(goodsPath, rowIndex);
+            fillTable(goodsPath, goodsColNames, goodsTable);
+        }
+        rowIndex = -1;
+    }//GEN-LAST:event_goodsDeleteButtonActionPerformed
+
+    private void togDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togDeleteButtonActionPerformed
+        if (rowIndex != -1) {
+                delete(togPath, rowIndex);
+                fillTable(togPath, togColNames, togTable);          
+        }
+        rowIndex = -1;
+    }//GEN-LAST:event_togDeleteButtonActionPerformed
+
+    private void supDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supDeleteButtonActionPerformed
+        if (rowIndex != -1) {
+                delete(supPath, rowIndex);
+                fillTable(supPath, supColNames, suppliersTable);          
+        }
+        rowIndex = -1;
+    }//GEN-LAST:event_supDeleteButtonActionPerformed
+
+    private void custDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custDeleteButtonActionPerformed
+        if (rowIndex != -1) {
+                delete(cusPath, rowIndex);
+                fillTable(cusPath, custColNames, customersTable);          
+        }
+        rowIndex = -1;
+    }//GEN-LAST:event_custDeleteButtonActionPerformed
+
+    private void stockDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockDeleteButtonActionPerformed
+        if (rowIndex != -1) {
+                delete(stockPath, rowIndex);
+                fillTable(stockPath, stockColNames, stockTable);          
+        }
+        rowIndex = -1;
+    }//GEN-LAST:event_stockDeleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1232,13 +1451,13 @@ public class MainActivity extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainActivity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainActivity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainActivity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainActivity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -1247,7 +1466,7 @@ public class MainActivity extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainActivity().setVisible(true);
+                new Main().setVisible(true);
             }
         });
     }
@@ -1285,12 +1504,74 @@ public class MainActivity extends javax.swing.JFrame {
     }
 
     public void add(File path, Vector addition) {
-        try (FileWriter writer = new FileWriter(path, true)) {
-            writer.append("\n");
-            writer.write(String.join(";", addition));
-            writer.flush();
+        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path, true), StandardCharsets.UTF_8))) {
+            bw.write("\n");
+            bw.write(String.join(";", addition));
+            bw.close();
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void insert(File path, Vector newLine, int rowIndex) {
+        Scanner sc;
+        int counter = 0;
+        StringBuilder newFile = new StringBuilder();
+        try {
+            sc = new Scanner(path, "UTF-8");
+            while (sc.hasNextLine()) {
+                System.out.println(counter);
+                if (counter == rowIndex) {
+                    newFile.append(String.join(";", newLine));
+                    if (sc.hasNextLine()) {
+                        System.out.println(sc.nextLine());
+                    }
+                } else {
+                    newFile.append(sc.nextLine());
+
+                }
+                newFile.append("\n");
+                counter++;
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path, false), StandardCharsets.UTF_8))) {
+            bw.write(newFile.toString());
+            bw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void delete(File path, int rowIndex) {
+        Scanner sc;
+        int counter = 0;
+        StringBuilder newFile = new StringBuilder();
+        try {
+            sc = new Scanner(path, "UTF-8");
+            while (sc.hasNextLine()) {
+                System.out.println(counter);
+                if (counter == rowIndex) {
+                    if (sc.hasNextLine()) {
+                        System.out.println(sc.nextLine());
+                    }
+                } else {
+                    newFile.append(sc.nextLine());
+                    newFile.append("\n");
+                }
+                counter++;
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path, false), StandardCharsets.UTF_8))) {
+            bw.write(newFile.toString());
+            bw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

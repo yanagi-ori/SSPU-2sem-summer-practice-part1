@@ -1404,32 +1404,32 @@ public class Main extends javax.swing.JFrame {
 
     private void togDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togDeleteButtonActionPerformed
         if (rowIndex != -1) {
-                delete(togPath, rowIndex);
-                fillTable(togPath, togColNames, togTable);          
+            delete(togPath, rowIndex);
+            fillTable(togPath, togColNames, togTable);
         }
         rowIndex = -1;
     }//GEN-LAST:event_togDeleteButtonActionPerformed
 
     private void supDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supDeleteButtonActionPerformed
         if (rowIndex != -1) {
-                delete(supPath, rowIndex);
-                fillTable(supPath, supColNames, suppliersTable);          
+            delete(supPath, rowIndex);
+            fillTable(supPath, supColNames, suppliersTable);
         }
         rowIndex = -1;
     }//GEN-LAST:event_supDeleteButtonActionPerformed
 
     private void custDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custDeleteButtonActionPerformed
         if (rowIndex != -1) {
-                delete(cusPath, rowIndex);
-                fillTable(cusPath, custColNames, customersTable);          
+            delete(cusPath, rowIndex);
+            fillTable(cusPath, custColNames, customersTable);
         }
         rowIndex = -1;
     }//GEN-LAST:event_custDeleteButtonActionPerformed
 
     private void stockDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockDeleteButtonActionPerformed
         if (rowIndex != -1) {
-                delete(stockPath, rowIndex);
-                fillTable(stockPath, stockColNames, stockTable);          
+            delete(stockPath, rowIndex);
+            fillTable(stockPath, stockColNames, stockTable);
         }
         rowIndex = -1;
     }//GEN-LAST:event_stockDeleteButtonActionPerformed

@@ -34,13 +34,13 @@ public class MainActivity extends javax.swing.JFrame {
     Vector<String> supColNames;
     Vector<String> custColNames;
     Vector<String> stockColNames;
-    static File empPath;
-    static File posPath;
-    static File goodsPath;
-    static File togPath;
-    static File supPath;
-    static File cusPath;
-    static File stockPath;
+    File empPath;
+    File posPath;
+    File goodsPath;
+    File togPath;
+    File supPath;
+    File cusPath;
+    File stockPath;
 
     /**
      * Creates new form MainActivity
@@ -1173,6 +1173,10 @@ public class MainActivity extends javax.swing.JFrame {
 
     private void supAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supAddButtonActionPerformed
         // TODO add your handling code here:
+        PosOperationDialog ad = new PosOperationDialog(this, true);
+        ad.setVisible(true);
+        add(supPath, ad.get());
+        fillTable(supPath, supColNames, suppliersTable);
     }//GEN-LAST:event_supAddButtonActionPerformed
 
     private void supEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supEditButtonActionPerformed

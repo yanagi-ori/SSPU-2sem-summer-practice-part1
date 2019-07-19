@@ -57,6 +57,7 @@ public class Main extends javax.swing.JFrame {
      * Creates new form MainActivity
      */
     public Main() {
+        setTitle("БД оптового склада");
         initComponents();
 
         empColNames = new Vector<String>(Arrays.asList(strEmpColNames));

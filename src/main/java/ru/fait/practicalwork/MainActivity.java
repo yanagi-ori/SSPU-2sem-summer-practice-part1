@@ -1165,6 +1165,10 @@ public class MainActivity extends javax.swing.JFrame {
 
     private void togAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togAddButtonActionPerformed
         // TODO add your handling code here:
+        PosOperationDialog ad = new PosOperationDialog(this, true);
+        ad.setVisible(true);
+        add(togPath, ad.get());
+        fillTable(togPath, togColNames, togTable);
     }//GEN-LAST:event_togAddButtonActionPerformed
 
     private void togEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togEditButtonActionPerformed
@@ -1185,6 +1189,10 @@ public class MainActivity extends javax.swing.JFrame {
 
     private void custAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custAddButtonActionPerformed
         // TODO add your handling code here:
+        PosOperationDialog ad = new PosOperationDialog(this, true);
+        ad.setVisible(true);
+        add(cusPath, ad.get());
+        fillTable(cusPath, custColNames, customersTable);
     }//GEN-LAST:event_custAddButtonActionPerformed
 
     private void custEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custEditButtonActionPerformed
@@ -1193,6 +1201,10 @@ public class MainActivity extends javax.swing.JFrame {
 
     private void stockAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockAddButtonActionPerformed
         // TODO add your handling code here:
+        PosOperationDialog ad = new PosOperationDialog(this, true);
+        ad.setVisible(true);
+        add(stockPath, ad.get());
+        fillTable(stockPath, stockColNames, stockTable);
     }//GEN-LAST:event_stockAddButtonActionPerformed
 
     private void stockEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockEditButtonActionPerformed

@@ -9,13 +9,22 @@ import java.util.Vector;
 public class PosOperationDialog extends javax.swing.JDialog {
 
     Vector<String> line = new Vector<String>();
+    static Vector preview;
 
     /**
      * Creates new form addButtonDialog
      */
-    public PosOperationDialog(java.awt.Frame parent, boolean modal) {
+    public PosOperationDialog(java.awt.Frame parent, boolean modal, Vector out) {
         super(parent, modal);
         initComponents();
+        preview = out;
+        if (!preview.isEmpty()) {
+            codeField.setText(preview.get(0).toString());
+            nameField.setText(preview.get(1).toString());
+            salaryField.setText(preview.get(2).toString());
+            dutiesField.setText(preview.get(3).toString());
+            requirementsField.setText(preview.get(4).toString());
+        }
     }
 
     /**
@@ -202,7 +211,7 @@ public class PosOperationDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                PosOperationDialog dialog = new PosOperationDialog(new javax.swing.JFrame(), true);
+                PosOperationDialog dialog = new PosOperationDialog(new javax.swing.JFrame(), true, preview);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

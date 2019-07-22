@@ -9,13 +9,25 @@ import java.util.Vector;
 public class EmpOperationDialog extends javax.swing.JDialog {
 
     Vector<String> line = new Vector<String>();
+    static Vector preview;
 
     /**
      * Creates new form addButtonDialog
      */
-    public EmpOperationDialog(java.awt.Frame parent, boolean modal) {
+    public EmpOperationDialog(java.awt.Frame parent, boolean modal, Vector out) {
         super(parent, modal);
         initComponents();
+        preview = out;
+        if (!preview.isEmpty()) {
+            codeField.setText(preview.get(0).toString());
+            nameField.setText(preview.get(1).toString());
+            ageField.setText(preview.get(2).toString());
+            sexField.setText(preview.get(3).toString());
+            addressField.setText(preview.get(4).toString());
+            phoneField.setText(preview.get(5).toString());
+            passportField.setText(preview.get(6).toString());
+            positionField.setText(preview.get(7).toString());
+        }
     }
 
     /**
@@ -239,7 +251,7 @@ public class EmpOperationDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                EmpOperationDialog dialog = new EmpOperationDialog(new javax.swing.JFrame(), true);
+                EmpOperationDialog dialog = new EmpOperationDialog(new javax.swing.JFrame(), true, preview);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

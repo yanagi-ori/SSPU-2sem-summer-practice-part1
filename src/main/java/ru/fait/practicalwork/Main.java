@@ -1171,7 +1171,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_supListMenuItem4ActionPerformed
 
     private void custListMenuRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custListMenuRequestActionPerformed
-        // TODO add your handling code here:
         DefaultTableModel tm1 = (DefaultTableModel) customersTable.getModel();
         DefaultTableModel tm2 = (DefaultTableModel) goodsTable.getModel();
         CustRequestDialog rd = new CustRequestDialog(this, true, tm1.getDataVector(), tm2.getDataVector());
@@ -1195,14 +1194,16 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         DefaultTableModel tm1 = (DefaultTableModel) goodsTable.getModel();
         DefaultTableModel tm2 = (DefaultTableModel) togTable.getModel();
-        GoodsRequestDialog rd = new GoodsRequestDialog(this, true, tm1.getDataVector(), tm2.getDataVector());
+        GoodsRequestDialog rd = new GoodsRequestDialog(this, true, tm1.getDataVector(), (Vector) tm2.getDataVector().get(rowIndex));
         rd.setVisible(true);
     }//GEN-LAST:event_goodsListMenuRequestActionPerformed
+
 
     private void goodsEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goodsEditButtonActionPerformed
         // TODO add your handling code here:
         if (rowIndex != -1) {
-            GoodsOperationDialog ed = new GoodsOperationDialog(this, true);
+            DefaultTableModel dtm = (DefaultTableModel) goodsTable.getModel();
+            GoodsOperationDialog ed = new GoodsOperationDialog(this, true, (Vector) dtm.getDataVector().get(rowIndex));
             ed.setVisible(true);
             if (!ed.get().isEmpty()) {
                 insert(goodsPath, ed.get(), rowIndex);
@@ -1214,7 +1215,7 @@ public class Main extends javax.swing.JFrame {
 
     private void goodsAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goodsAddButtonActionPerformed
         // TODO add your handling code here:
-        GoodsOperationDialog ad = new GoodsOperationDialog(this, true);
+        GoodsOperationDialog ad = new GoodsOperationDialog(this, true, new Vector());
         ad.setVisible(true);
         add(goodsPath, ad.get());
         fillTable(goodsPath, goodsColNames, goodsTable);
@@ -1223,7 +1224,8 @@ public class Main extends javax.swing.JFrame {
     private void posEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posEditButtonActionPerformed
         // TODO add your handling code here:
         if (rowIndex != -1) {
-            PosOperationDialog ed = new PosOperationDialog(this, true);
+            DefaultTableModel dtm = (DefaultTableModel) positionsTable.getModel();
+            PosOperationDialog ed = new PosOperationDialog(this, true, (Vector) dtm.getDataVector().get(rowIndex));
             ed.setVisible(true);
             if (!ed.get().isEmpty()) {
                 insert(posPath, ed.get(), rowIndex);
@@ -1235,7 +1237,7 @@ public class Main extends javax.swing.JFrame {
 
     private void posAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posAddButtonActionPerformed
         // TODO add your handling code here:
-        PosOperationDialog ad = new PosOperationDialog(this, true);
+        PosOperationDialog ad = new PosOperationDialog(this, true, new Vector());
         ad.setVisible(true);
         add(posPath, ad.get());
         fillTable(posPath, posColNames, positionsTable);
@@ -1244,6 +1246,7 @@ public class Main extends javax.swing.JFrame {
     private void empEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empEditButtonActionPerformed
         // TODO add your handling code here:
         if (rowIndex != -1) {
+            DefaultTableModel dtm = (DefaultTableModel) employeesTable.getModel();
             EmpOperationDialog ed = new EmpOperationDialog(this, true, (Vector) dtm.getDataVector().get(rowIndex));
             ed.setVisible(true);
             if (!ed.get().isEmpty()) {
@@ -1256,7 +1259,7 @@ public class Main extends javax.swing.JFrame {
 
     private void empAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empAddButtonActionPerformed
         // TODO add your handling code here:
-        EmpOperationDialog ad = new EmpOperationDialog(this, true, vector);
+        EmpOperationDialog ad = new EmpOperationDialog(this, true, new Vector());
         ad.setVisible(true);
         add(empPath, ad.get());
         fillTable(empPath, empColNames, employeesTable);
@@ -1264,7 +1267,7 @@ public class Main extends javax.swing.JFrame {
 
     private void togAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togAddButtonActionPerformed
         // TODO add your handling code here:
-        TogOperationDialog ad = new TogOperationDialog(this, true);
+        TogOperationDialog ad = new TogOperationDialog(this, true, new Vector());
         ad.setVisible(true);
         add(togPath, ad.get());
         fillTable(togPath, togColNames, togTable);
@@ -1273,7 +1276,8 @@ public class Main extends javax.swing.JFrame {
     private void togEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togEditButtonActionPerformed
         // TODO add your handling code here:
         if (rowIndex != -1) {
-            TogOperationDialog ed = new TogOperationDialog(this, true);
+            DefaultTableModel dtm = (DefaultTableModel) togTable.getModel();
+            TogOperationDialog ed = new TogOperationDialog(this, true, (Vector) dtm.getDataVector().get(rowIndex));
             ed.setVisible(true);
             if (!ed.get().isEmpty()) {
                 insert(togPath, ed.get(), rowIndex);
@@ -1284,7 +1288,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_togEditButtonActionPerformed
 
     private void supAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supAddButtonActionPerformed
-        SupOperationDialog ad = new SupOperationDialog(this, true);
+        SupOperationDialog ad = new SupOperationDialog(this, true, new Vector());
         ad.setVisible(true);
         add(supPath, ad.get());
         fillTable(supPath, supColNames, suppliersTable);
@@ -1292,7 +1296,8 @@ public class Main extends javax.swing.JFrame {
 
     private void supEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supEditButtonActionPerformed
         if (rowIndex != -1) {
-            StockOperationDialog ed = new StockOperationDialog(this, true);
+            DefaultTableModel dtm = (DefaultTableModel) suppliersTable.getModel();
+            SupOperationDialog ed = new SupOperationDialog(this, true, (Vector) dtm.getDataVector().get(rowIndex));
             ed.setVisible(true);
             if (!ed.get().isEmpty()) {
                 insert(supPath, ed.get(), rowIndex);
@@ -1311,7 +1316,8 @@ public class Main extends javax.swing.JFrame {
 
     private void custEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custEditButtonActionPerformed
         if (rowIndex != -1) {
-            CustOperationDialog ed = new CustOperationDialog(this, true, dtm.getDataVector());
+            DefaultTableModel dtm = (DefaultTableModel) customersTable.getModel();
+            CustOperationDialog ed = new CustOperationDialog(this, true, (Vector) dtm.getDataVector().get(rowIndex));
             ed.setVisible(true);
             if (!ed.get().isEmpty()) {
                 insert(cusPath, ed.get(), rowIndex);
@@ -1322,7 +1328,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_custEditButtonActionPerformed
 
     private void stockAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockAddButtonActionPerformed
-        StockOperationDialog ad = new StockOperationDialog(this, true);
+        StockOperationDialog ad = new StockOperationDialog(this, true, new Vector());
         ad.setVisible(true);
         add(stockPath, ad.get());
         fillTable(stockPath, stockColNames, stockTable);
@@ -1330,7 +1336,8 @@ public class Main extends javax.swing.JFrame {
 
     private void stockEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockEditButtonActionPerformed
         if (rowIndex != -1) {
-            StockOperationDialog ed = new StockOperationDialog(this, true);
+            DefaultTableModel dtm = (DefaultTableModel) stockTable.getModel();
+            StockOperationDialog ed = new StockOperationDialog(this, true, (Vector) dtm.getDataVector().get(rowIndex));
             ed.setVisible(true);
             if (!ed.get().isEmpty()) {
                 insert(stockPath, ed.get(), rowIndex);

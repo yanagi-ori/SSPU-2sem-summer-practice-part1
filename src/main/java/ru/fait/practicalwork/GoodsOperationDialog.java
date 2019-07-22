@@ -9,13 +9,24 @@ import java.util.Vector;
 public class GoodsOperationDialog extends javax.swing.JDialog {
 
     Vector<String> line = new Vector<String>();
+    static Vector preview;
 
     /**
      * Creates new form addButtonDialog
      */
-    public GoodsOperationDialog(java.awt.Frame parent, boolean modal) {
+    public GoodsOperationDialog(java.awt.Frame parent, boolean modal, Vector out) {
         super(parent, modal);
         initComponents();
+        preview = out;
+        if (!preview.isEmpty()) {
+            codeField.setText(preview.get(0).toString());
+            typeField.setText(preview.get(1).toString());
+            fabricField.setText(preview.get(2).toString());
+            nameField.setText(preview.get(3).toString());
+            condField.setText(preview.get(4).toString());
+            packField.setText(preview.get(5).toString());
+            slField.setText(preview.get(6).toString());
+        }
     }
 
     /**
@@ -240,7 +251,7 @@ public class GoodsOperationDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GoodsOperationDialog dialog = new GoodsOperationDialog(new javax.swing.JFrame(), true);
+                GoodsOperationDialog dialog = new GoodsOperationDialog(new javax.swing.JFrame(), true, preview);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

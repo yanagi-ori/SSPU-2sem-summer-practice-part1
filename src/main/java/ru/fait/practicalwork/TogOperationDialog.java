@@ -9,13 +9,21 @@ import java.util.Vector;
 public class TogOperationDialog extends javax.swing.JDialog {
 
     Vector<String> line = new Vector<String>();
+    static Vector preview;
 
     /**
      * Creates new form addButtonDialog
      */
-    public TogOperationDialog(java.awt.Frame parent, boolean modal) {
+    public TogOperationDialog(java.awt.Frame parent, boolean modal, Vector out) {
         super(parent, modal);
         initComponents();
+        preview = out;
+        if (!preview.isEmpty()) {
+            codeField.setText(preview.get(0).toString());
+            typeField.setText(preview.get(1).toString());
+            fabricField.setText(preview.get(2).toString());
+            nameField.setText(preview.get(3).toString());
+        }
     }
 
     /**
@@ -196,7 +204,7 @@ public class TogOperationDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TogOperationDialog dialog = new TogOperationDialog(new javax.swing.JFrame(), true);
+                TogOperationDialog dialog = new TogOperationDialog(new javax.swing.JFrame(), true, preview);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

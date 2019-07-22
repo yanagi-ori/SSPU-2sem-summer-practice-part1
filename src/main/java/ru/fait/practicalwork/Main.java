@@ -1202,7 +1202,7 @@ public class Main extends javax.swing.JFrame {
     private void goodsEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goodsEditButtonActionPerformed
         // TODO add your handling code here:
         if (rowIndex != -1) {
-            StockOperationDialog ed = new StockOperationDialog(this, true);
+            GoodsOperationDialog ed = new GoodsOperationDialog(this, true);
             ed.setVisible(true);
             if (!ed.get().isEmpty()) {
                 insert(goodsPath, ed.get(), rowIndex);
@@ -1214,7 +1214,7 @@ public class Main extends javax.swing.JFrame {
 
     private void goodsAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goodsAddButtonActionPerformed
         // TODO add your handling code here:
-        PosOperationDialog ad = new PosOperationDialog(this, true);
+        GoodsOperationDialog ad = new GoodsOperationDialog(this, true);
         ad.setVisible(true);
         add(goodsPath, ad.get());
         fillTable(goodsPath, goodsColNames, goodsTable);
@@ -1223,7 +1223,7 @@ public class Main extends javax.swing.JFrame {
     private void posEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posEditButtonActionPerformed
         // TODO add your handling code here:
         if (rowIndex != -1) {
-            StockOperationDialog ed = new StockOperationDialog(this, true);
+            PosOperationDialog ed = new PosOperationDialog(this, true);
             ed.setVisible(true);
             if (!ed.get().isEmpty()) {
                 insert(posPath, ed.get(), rowIndex);
@@ -1244,7 +1244,7 @@ public class Main extends javax.swing.JFrame {
     private void empEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empEditButtonActionPerformed
         // TODO add your handling code here:
         if (rowIndex != -1) {
-            StockOperationDialog ed = new StockOperationDialog(this, true);
+            EmpOperationDialog ed = new EmpOperationDialog(this, true, (Vector) dtm.getDataVector().get(rowIndex));
             ed.setVisible(true);
             if (!ed.get().isEmpty()) {
                 insert(empPath, ed.get(), rowIndex);
@@ -1256,7 +1256,7 @@ public class Main extends javax.swing.JFrame {
 
     private void empAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empAddButtonActionPerformed
         // TODO add your handling code here:
-        EmpOperationDialog ad = new EmpOperationDialog(this, true);
+        EmpOperationDialog ad = new EmpOperationDialog(this, true, vector);
         ad.setVisible(true);
         add(empPath, ad.get());
         fillTable(empPath, empColNames, employeesTable);
@@ -1264,7 +1264,7 @@ public class Main extends javax.swing.JFrame {
 
     private void togAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togAddButtonActionPerformed
         // TODO add your handling code here:
-        PosOperationDialog ad = new PosOperationDialog(this, true);
+        TogOperationDialog ad = new TogOperationDialog(this, true);
         ad.setVisible(true);
         add(togPath, ad.get());
         fillTable(togPath, togColNames, togTable);
@@ -1273,7 +1273,7 @@ public class Main extends javax.swing.JFrame {
     private void togEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togEditButtonActionPerformed
         // TODO add your handling code here:
         if (rowIndex != -1) {
-            StockOperationDialog ed = new StockOperationDialog(this, true);
+            TogOperationDialog ed = new TogOperationDialog(this, true);
             ed.setVisible(true);
             if (!ed.get().isEmpty()) {
                 insert(togPath, ed.get(), rowIndex);
@@ -1284,7 +1284,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_togEditButtonActionPerformed
 
     private void supAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supAddButtonActionPerformed
-        PosOperationDialog ad = new PosOperationDialog(this, true);
+        SupOperationDialog ad = new SupOperationDialog(this, true);
         ad.setVisible(true);
         add(supPath, ad.get());
         fillTable(supPath, supColNames, suppliersTable);
@@ -1303,7 +1303,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_supEditButtonActionPerformed
 
     private void custAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custAddButtonActionPerformed
-        PosOperationDialog ad = new PosOperationDialog(this, true);
+        CustOperationDialog ad = new CustOperationDialog(this, true, new Vector());
         ad.setVisible(true);
         add(cusPath, ad.get());
         fillTable(cusPath, custColNames, customersTable);
@@ -1311,7 +1311,7 @@ public class Main extends javax.swing.JFrame {
 
     private void custEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custEditButtonActionPerformed
         if (rowIndex != -1) {
-            StockOperationDialog ed = new StockOperationDialog(this, true);
+            CustOperationDialog ed = new CustOperationDialog(this, true, dtm.getDataVector());
             ed.setVisible(true);
             if (!ed.get().isEmpty()) {
                 insert(cusPath, ed.get(), rowIndex);
@@ -1322,7 +1322,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_custEditButtonActionPerformed
 
     private void stockAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockAddButtonActionPerformed
-        PosOperationDialog ad = new PosOperationDialog(this, true);
+        StockOperationDialog ad = new StockOperationDialog(this, true);
         ad.setVisible(true);
         add(stockPath, ad.get());
         fillTable(stockPath, stockColNames, stockTable);

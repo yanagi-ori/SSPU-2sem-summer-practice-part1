@@ -200,7 +200,7 @@ public class EmpOperationDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_codeFieldActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        // TODO add your handling code here:
+
         line.add(codeField.getText());
         line.add(nameField.getText());
         line.add(ageField.getText());
@@ -262,6 +262,12 @@ public class EmpOperationDialog extends javax.swing.JDialog {
     }
 
     public Vector get() {
+        if (codeField.getText().isEmpty() || nameField.getText().isEmpty()
+                || ageField.getText().isEmpty() || sexField.getText().isEmpty()
+                || addressField.getText().isEmpty() || passportField.getText().isEmpty()
+                || positionField.getText().isEmpty() || phoneField.getText().isEmpty()) {
+            return new Vector();
+        }
         return line;
     }
 

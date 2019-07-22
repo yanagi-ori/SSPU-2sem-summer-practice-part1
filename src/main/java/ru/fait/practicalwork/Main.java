@@ -1199,6 +1199,9 @@ public class Main extends javax.swing.JFrame {
             if (!ed.get().isEmpty()) {
                 insert(goodsPath, ed.get(), rowIndex);
                 fillTable(goodsPath, goodsColNames, goodsTable);
+            } else {
+                WarnDialog wd = new WarnDialog(this, true);
+                wd.setVisible(true);
             }
         }
         rowIndex = -1;
@@ -1207,8 +1210,13 @@ public class Main extends javax.swing.JFrame {
     private void goodsAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goodsAddButtonActionPerformed
         GoodsOperationDialog ad = new GoodsOperationDialog(this, true, new Vector());
         ad.setVisible(true);
-        add(goodsPath, ad.get());
-        fillTable(goodsPath, goodsColNames, goodsTable);
+        if (!ad.get().isEmpty()) {
+            add(goodsPath, ad.get());
+            fillTable(goodsPath, goodsColNames, goodsTable);
+        } else {
+            WarnDialog wd = new WarnDialog(this, true);
+            wd.setVisible(true);
+        }
     }//GEN-LAST:event_goodsAddButtonActionPerformed
 
     private void posEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posEditButtonActionPerformed
@@ -1219,6 +1227,9 @@ public class Main extends javax.swing.JFrame {
             if (!ed.get().isEmpty()) {
                 insert(posPath, ed.get(), rowIndex);
                 fillTable(posPath, posColNames, positionsTable);
+            } else {
+                WarnDialog wd = new WarnDialog(this, true);
+                wd.setVisible(true);
             }
         }
         rowIndex = -1;
@@ -1227,8 +1238,13 @@ public class Main extends javax.swing.JFrame {
     private void posAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posAddButtonActionPerformed
         PosOperationDialog ad = new PosOperationDialog(this, true, new Vector());
         ad.setVisible(true);
-        add(posPath, ad.get());
-        fillTable(posPath, posColNames, positionsTable);
+        if (!ad.get().isEmpty()) {
+            add(posPath, ad.get());
+            fillTable(posPath, posColNames, positionsTable);
+        } else {
+            WarnDialog wd = new WarnDialog(this, true);
+            wd.setVisible(true);
+        }
     }//GEN-LAST:event_posAddButtonActionPerformed
 
     private void empEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empEditButtonActionPerformed
@@ -1239,6 +1255,9 @@ public class Main extends javax.swing.JFrame {
             if (!ed.get().isEmpty()) {
                 insert(empPath, ed.get(), rowIndex);
                 fillTable(empPath, empColNames, employeesTable);
+            } else {
+                WarnDialog wd = new WarnDialog(this, true);
+                wd.setVisible(true);
             }
         }
         rowIndex = -1;
@@ -1247,15 +1266,25 @@ public class Main extends javax.swing.JFrame {
     private void empAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empAddButtonActionPerformed
         EmpOperationDialog ad = new EmpOperationDialog(this, true, new Vector());
         ad.setVisible(true);
-        add(empPath, ad.get());
-        fillTable(empPath, empColNames, employeesTable);
+        if (!ad.get().isEmpty()) {
+            add(empPath, ad.get());
+            fillTable(empPath, empColNames, employeesTable);
+        } else {
+            WarnDialog wd = new WarnDialog(this, true);
+            wd.setVisible(true);
+        }
     }//GEN-LAST:event_empAddButtonActionPerformed
 
     private void togAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togAddButtonActionPerformed
         TogOperationDialog ad = new TogOperationDialog(this, true, new Vector());
         ad.setVisible(true);
-        add(togPath, ad.get());
-        fillTable(togPath, togColNames, togTable);
+        if (!ad.get().isEmpty()) {
+            add(togPath, ad.get());
+            fillTable(togPath, togColNames, togTable);
+        } else {
+            WarnDialog wd = new WarnDialog(this, true);
+            wd.setVisible(true);
+        }
     }//GEN-LAST:event_togAddButtonActionPerformed
 
     private void togEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togEditButtonActionPerformed
@@ -1266,6 +1295,9 @@ public class Main extends javax.swing.JFrame {
             if (!ed.get().isEmpty()) {
                 insert(togPath, ed.get(), rowIndex);
                 fillTable(togPath, togColNames, togTable);
+            } else {
+                WarnDialog wd = new WarnDialog(this, true);
+                wd.setVisible(true);
             }
         }
         rowIndex = -1;
@@ -1274,8 +1306,13 @@ public class Main extends javax.swing.JFrame {
     private void supAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supAddButtonActionPerformed
         SupOperationDialog ad = new SupOperationDialog(this, true, new Vector());
         ad.setVisible(true);
-        add(supPath, ad.get());
-        fillTable(supPath, supColNames, suppliersTable);
+        if (!ad.get().isEmpty()) {
+            add(supPath, ad.get());
+            fillTable(supPath, supColNames, suppliersTable);
+        } else {
+            WarnDialog wd = new WarnDialog(this, true);
+            wd.setVisible(true);
+        }
     }//GEN-LAST:event_supAddButtonActionPerformed
 
     private void supEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supEditButtonActionPerformed
@@ -1286,6 +1323,9 @@ public class Main extends javax.swing.JFrame {
             if (!ed.get().isEmpty()) {
                 insert(supPath, ed.get(), rowIndex);
                 fillTable(supPath, supColNames, suppliersTable);
+            } else {
+                WarnDialog wd = new WarnDialog(this, true);
+                wd.setVisible(true);
             }
         }
         rowIndex = -1;
@@ -1294,8 +1334,13 @@ public class Main extends javax.swing.JFrame {
     private void custAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custAddButtonActionPerformed
         CustOperationDialog ad = new CustOperationDialog(this, true, new Vector());
         ad.setVisible(true);
-        add(cusPath, ad.get());
-        fillTable(cusPath, custColNames, customersTable);
+        if (!ad.get().isEmpty()) {
+            add(cusPath, ad.get());
+            fillTable(cusPath, custColNames, customersTable);
+        } else {
+            WarnDialog wd = new WarnDialog(this, true);
+            wd.setVisible(true);
+        }
     }//GEN-LAST:event_custAddButtonActionPerformed
 
     private void custEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custEditButtonActionPerformed
@@ -1306,6 +1351,9 @@ public class Main extends javax.swing.JFrame {
             if (!ed.get().isEmpty()) {
                 insert(cusPath, ed.get(), rowIndex);
                 fillTable(cusPath, custColNames, customersTable);
+            } else {
+                WarnDialog wd = new WarnDialog(this, true);
+                wd.setVisible(true);
             }
         }
         rowIndex = -1;
@@ -1314,8 +1362,13 @@ public class Main extends javax.swing.JFrame {
     private void stockAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockAddButtonActionPerformed
         StockOperationDialog ad = new StockOperationDialog(this, true, new Vector());
         ad.setVisible(true);
-        add(stockPath, ad.get());
-        fillTable(stockPath, stockColNames, stockTable);
+        if (!ad.get().isEmpty()) {
+            add(stockPath, ad.get());
+            fillTable(stockPath, stockColNames, stockTable);
+        } else {
+            WarnDialog wd = new WarnDialog(this, true);
+            wd.setVisible(true);
+        }
     }//GEN-LAST:event_stockAddButtonActionPerformed
 
     private void stockEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockEditButtonActionPerformed
@@ -1326,6 +1379,9 @@ public class Main extends javax.swing.JFrame {
             if (!ed.get().isEmpty()) {
                 insert(stockPath, ed.get(), rowIndex);
                 fillTable(stockPath, stockColNames, stockTable);
+            } else {
+                WarnDialog wd = new WarnDialog(this, true);
+                wd.setVisible(true);
             }
         }
         rowIndex = -1;

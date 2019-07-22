@@ -291,12 +291,6 @@ public class StockOperationDialog extends javax.swing.JDialog {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -314,6 +308,13 @@ public class StockOperationDialog extends javax.swing.JDialog {
     }
 
     public Vector get() {
+        if (codeField.getText().isEmpty() || nameField.getText().isEmpty()
+                || ageField.getText().isEmpty() || sexField.getText().isEmpty()
+                || addressField.getText().isEmpty() || passportField.getText().isEmpty()
+                || positionField.getText().isEmpty() || phoneField.getText().isEmpty()
+                || positionField1.getText().isEmpty() || positionField2.getText().isEmpty()) {
+            return new Vector();
+        }
         return line;
     }
 

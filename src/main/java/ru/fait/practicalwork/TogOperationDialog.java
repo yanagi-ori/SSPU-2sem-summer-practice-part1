@@ -203,6 +203,10 @@ public class TogOperationDialog extends javax.swing.JDialog {
     }
 
     public Vector get() {
+        if (codeField.getText().isEmpty() || fabricField.getText().isEmpty()
+                || nameField.getText().isEmpty() || typeField.getText().isEmpty()) {
+            return new Vector();
+        }
         return line;
     }
 

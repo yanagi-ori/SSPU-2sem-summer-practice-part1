@@ -258,6 +258,12 @@ public class SupOperationDialog extends javax.swing.JDialog {
     }
 
     public Vector get() {
+        if (codeField.getText().isEmpty() || condField.getText().isEmpty()
+                || fabricField.getText().isEmpty() || nameField.getText().isEmpty()
+                || packField.getText().isEmpty() || slField.getText().isEmpty()
+                || typeField.getText().isEmpty()) {
+            return new Vector();
+        }
         return line;
     }
 

@@ -201,12 +201,6 @@ public class PosOperationDialog extends javax.swing.JDialog {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -224,6 +218,11 @@ public class PosOperationDialog extends javax.swing.JDialog {
     }
 
     public Vector get() {
+        if (codeField.getText().isEmpty() || nameField.getText().isEmpty()
+                || dutiesField.getText().isEmpty() || salaryField.getText().isEmpty()
+                || requirementsField.getText().isEmpty()) {
+            return new Vector();
+        }
         return line;
     }
 

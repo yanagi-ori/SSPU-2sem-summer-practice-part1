@@ -227,6 +227,7 @@ public class OrdersRequestDialog extends javax.swing.JDialog {
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 OrdersRequestDialog dialog = new OrdersRequestDialog(new javax.swing.JFrame(), true, stockData, goodsData, supData, cusData, empData);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {

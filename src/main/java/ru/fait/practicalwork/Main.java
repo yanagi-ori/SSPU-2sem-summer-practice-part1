@@ -1053,7 +1053,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_openStockMenuItemActionPerformed
 
     private void openGoodsTableMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openGoodsTableMenuItemActionPerformed
-        // TODO add your handling code here:
         JFileChooser fc = new JFileChooser();
         class MyTxtFilter extends FileFilter {
 
@@ -1077,7 +1076,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_openGoodsTableMenuItemActionPerformed
 
     private void hrdMenuRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hrdMenuRequestActionPerformed
-        // TODO add your handling code here:
         DefaultTableModel tm1 = (DefaultTableModel) employeesTable.getModel();
         DefaultTableModel tm2 = (DefaultTableModel) positionsTable.getModel();
         HrdRequestDialog rd = new HrdRequestDialog(this, true, tm1.getDataVector(), tm2.getDataVector());
@@ -1091,7 +1089,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void openPositionsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openPositionsMenuItemActionPerformed
-        // TODO add your handling code here:
         JFileChooser fc = new JFileChooser();
         class MyTxtFilter extends FileFilter {
 
@@ -1115,7 +1112,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_openPositionsMenuItemActionPerformed
 
     private void openSuppliersMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openSuppliersMenuItemActionPerformed
-        // TODO add your handling code here:
         JFileChooser fc = new JFileChooser();
         class MyTxtFilter extends FileFilter {
 
@@ -1139,7 +1135,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_openSuppliersMenuItemActionPerformed
 
     private void openTOGMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openTOGMenuItemActionPerformed
-        // TODO add your handling code here:
         JFileChooser fc = new JFileChooser();
         class MyTxtFilter extends FileFilter {
 
@@ -1163,7 +1158,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_openTOGMenuItemActionPerformed
 
     private void supListMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supListMenuItem4ActionPerformed
-        // TODO add your handling code here:
         DefaultTableModel tm1 = (DefaultTableModel) suppliersTable.getModel();
         DefaultTableModel tm2 = (DefaultTableModel) goodsTable.getModel();
         SupRequestDialog rd = new SupRequestDialog(this, true, tm1.getDataVector(), tm2.getDataVector());
@@ -1178,7 +1172,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_custListMenuRequestActionPerformed
 
     private void ordersMenuRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordersMenuRequestActionPerformed
-        // TODO add your handling code here:
         DefaultTableModel tm1 = (DefaultTableModel) stockTable.getModel();
         DefaultTableModel tm2 = (DefaultTableModel) goodsTable.getModel();
         DefaultTableModel tm3 = (DefaultTableModel) suppliersTable.getModel();
@@ -1191,7 +1184,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_ordersMenuRequestActionPerformed
 
     private void goodsListMenuRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goodsListMenuRequestActionPerformed
-        // TODO add your handling code here:
         DefaultTableModel tm1 = (DefaultTableModel) goodsTable.getModel();
         DefaultTableModel tm2 = (DefaultTableModel) togTable.getModel();
         GoodsRequestDialog rd = new GoodsRequestDialog(this, true, tm1.getDataVector(), (Vector) tm2.getDataVector().get(rowIndex));
@@ -1200,7 +1192,6 @@ public class Main extends javax.swing.JFrame {
 
 
     private void goodsEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goodsEditButtonActionPerformed
-        // TODO add your handling code here:
         if (rowIndex != -1) {
             DefaultTableModel dtm = (DefaultTableModel) goodsTable.getModel();
             GoodsOperationDialog ed = new GoodsOperationDialog(this, true, (Vector) dtm.getDataVector().get(rowIndex));
@@ -1214,7 +1205,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_goodsEditButtonActionPerformed
 
     private void goodsAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goodsAddButtonActionPerformed
-        // TODO add your handling code here:
         GoodsOperationDialog ad = new GoodsOperationDialog(this, true, new Vector());
         ad.setVisible(true);
         add(goodsPath, ad.get());
@@ -1222,7 +1212,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_goodsAddButtonActionPerformed
 
     private void posEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posEditButtonActionPerformed
-        // TODO add your handling code here:
         if (rowIndex != -1) {
             DefaultTableModel dtm = (DefaultTableModel) positionsTable.getModel();
             PosOperationDialog ed = new PosOperationDialog(this, true, (Vector) dtm.getDataVector().get(rowIndex));
@@ -1236,7 +1225,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_posEditButtonActionPerformed
 
     private void posAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posAddButtonActionPerformed
-        // TODO add your handling code here:
         PosOperationDialog ad = new PosOperationDialog(this, true, new Vector());
         ad.setVisible(true);
         add(posPath, ad.get());
@@ -1244,7 +1232,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_posAddButtonActionPerformed
 
     private void empEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empEditButtonActionPerformed
-        // TODO add your handling code here:
         if (rowIndex != -1) {
             DefaultTableModel dtm = (DefaultTableModel) employeesTable.getModel();
             EmpOperationDialog ed = new EmpOperationDialog(this, true, (Vector) dtm.getDataVector().get(rowIndex));
@@ -1258,7 +1245,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_empEditButtonActionPerformed
 
     private void empAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empAddButtonActionPerformed
-        // TODO add your handling code here:
         EmpOperationDialog ad = new EmpOperationDialog(this, true, new Vector());
         ad.setVisible(true);
         add(empPath, ad.get());
@@ -1266,7 +1252,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_empAddButtonActionPerformed
 
     private void togAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togAddButtonActionPerformed
-        // TODO add your handling code here:
         TogOperationDialog ad = new TogOperationDialog(this, true, new Vector());
         ad.setVisible(true);
         add(togPath, ad.get());
@@ -1274,7 +1259,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_togAddButtonActionPerformed
 
     private void togEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togEditButtonActionPerformed
-        // TODO add your handling code here:
         if (rowIndex != -1) {
             DefaultTableModel dtm = (DefaultTableModel) togTable.getModel();
             TogOperationDialog ed = new TogOperationDialog(this, true, (Vector) dtm.getDataVector().get(rowIndex));

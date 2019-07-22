@@ -1353,37 +1353,30 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_stockTableMouseClicked
 
     private void employeesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeesTableMouseClicked
-        // TODO add your handling code here:
         rowIndex = employeesTable.getSelectedRow();
     }//GEN-LAST:event_employeesTableMouseClicked
 
     private void positionsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_positionsTableMouseClicked
-        // TODO add your handling code here:
         rowIndex = positionsTable.getSelectedRow();
     }//GEN-LAST:event_positionsTableMouseClicked
 
     private void goodsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goodsTableMouseClicked
-        // TODO add your handling code here:
         rowIndex = goodsTable.getSelectedRow();
     }//GEN-LAST:event_goodsTableMouseClicked
 
     private void togTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_togTableMouseClicked
-        // TODO add your handling code here:
         rowIndex = togTable.getSelectedRow();
     }//GEN-LAST:event_togTableMouseClicked
 
     private void suppliersTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_suppliersTableMouseClicked
-        // TODO add your handling code here:
         rowIndex = suppliersTable.getSelectedRow();
     }//GEN-LAST:event_suppliersTableMouseClicked
 
     private void customersTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customersTableMouseClicked
-        // TODO add your handling code here:
         rowIndex = customersTable.getSelectedRow();
     }//GEN-LAST:event_customersTableMouseClicked
 
     private void posDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posDeleteButtonActionPerformed
-        // TODO add your handling code here:
         if (rowIndex != -1) {
             delete(posPath, rowIndex);
             fillTable(posPath, posColNames, positionsTable);

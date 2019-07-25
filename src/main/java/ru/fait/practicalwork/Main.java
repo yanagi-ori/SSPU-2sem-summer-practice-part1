@@ -41,13 +41,20 @@ public class Main extends javax.swing.JFrame {
     Vector<String> supColNames;
     Vector<String> custColNames;
     Vector<String> stockColNames;
-    File empPath;
-    File posPath;
-    File goodsPath;
-    File togPath;
-    File supPath;
-    File cusPath;
-    File stockPath;
+    static File empPath;
+    Boolean eP = false;
+    static File posPath;
+    Boolean pP = false;
+    static File goodsPath;
+    Boolean gP = false;
+    static File togPath;
+    Boolean tP = false;
+    static File supPath;
+    Boolean suP = false;
+    static File cusPath;
+    Boolean cP = false;
+    static File stockPath;
+    Boolean stP = false;
     int rowIndex;
 
     /**
@@ -88,30 +95,51 @@ public class Main extends javax.swing.JFrame {
         if (new File("employees.txt").exists()) {
             empPath = new File("employees.txt");
             fillTable(empPath, empColNames, employeesTable);
+            eP = true;
+            empEditButton.setEnabled(true);
+            empDeleteButton.setEnabled(true);
         }
         if (new File("positions.txt").exists()) {
             posPath = new File("positions.txt");
             fillTable(posPath, posColNames, positionsTable);
+            pP = true;
+            posEditButton.setEnabled(true);
+            posDeleteButton.setEnabled(true);
         }
         if (new File("goods.txt").exists()) {
             goodsPath = new File("goods.txt");
             fillTable(goodsPath, goodsColNames, goodsTable);
+            gP = true;
+            goodsEditButton.setEnabled(true);
+            goodsDeleteButton.setEnabled(true);
         }
         if (new File("types_of_goods.txt").exists()) {
             togPath = new File("types_of_goods.txt");
             fillTable(togPath, togColNames, togTable);
+            tP = true;
+            togEditButton.setEnabled(true);
+            togDeleteButton.setEnabled(true);
         }
         if (new File("suppliers.txt").exists()) {
             supPath = new File("suppliers.txt");
             fillTable(supPath, supColNames, suppliersTable);
+            suP = true;
+            supEditButton.setEnabled(true);
+            supDeleteButton.setEnabled(true);
         }
         if (new File("customers.txt").exists()) {
             cusPath = new File("customers.txt");
             fillTable(cusPath, custColNames, customersTable);
+            cP = true;
+            custEditButton.setEnabled(true);
+            custDeleteButton.setEnabled(true);
         }
         if (new File("stock.txt").exists()) {
             stockPath = new File("stock.txt");
             fillTable(stockPath, stockColNames, stockTable);
+            stP = true;
+            stockEditButton.setEnabled(true);
+            stockDeleteButton.setEnabled(true);
         }
     }
 
@@ -251,6 +279,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         empEditButton.setText("Редактировать");
+        empEditButton.setEnabled(false);
         empEditButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empEditButtonActionPerformed(evt);
@@ -258,6 +287,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         empDeleteButton.setText("Удалить");
+        empDeleteButton.setEnabled(false);
         empDeleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empDeleteButtonActionPerformed(evt);
@@ -339,6 +369,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         posEditButton.setText("Редактировать");
+        posEditButton.setEnabled(false);
         posEditButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posEditButtonActionPerformed(evt);
@@ -346,6 +377,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         posDeleteButton.setText("Удалить");
+        posDeleteButton.setEnabled(false);
         posDeleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 posDeleteButtonActionPerformed(evt);
@@ -427,6 +459,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         goodsEditButton.setText("Редактировать");
+        goodsEditButton.setEnabled(false);
         goodsEditButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goodsEditButtonActionPerformed(evt);
@@ -434,6 +467,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         goodsDeleteButton.setText("Удалить");
+        goodsDeleteButton.setEnabled(false);
         goodsDeleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goodsDeleteButtonActionPerformed(evt);
@@ -530,6 +564,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         togEditButton.setText("Редактировать");
+        togEditButton.setEnabled(false);
         togEditButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 togEditButtonActionPerformed(evt);
@@ -537,6 +572,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         togDeleteButton.setText("Удалить");
+        togDeleteButton.setEnabled(false);
         togDeleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 togDeleteButtonActionPerformed(evt);
@@ -618,6 +654,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         supEditButton.setText("Редактировать");
+        supEditButton.setEnabled(false);
         supEditButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 supEditButtonActionPerformed(evt);
@@ -625,6 +662,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         supDeleteButton.setText("Удалить");
+        supDeleteButton.setEnabled(false);
         supDeleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 supDeleteButtonActionPerformed(evt);
@@ -706,6 +744,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         custEditButton.setText("Редактировать");
+        custEditButton.setEnabled(false);
         custEditButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 custEditButtonActionPerformed(evt);
@@ -713,6 +752,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         custDeleteButton.setText("Удалить");
+        custDeleteButton.setEnabled(false);
         custDeleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 custDeleteButtonActionPerformed(evt);
@@ -794,6 +834,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         stockEditButton.setText("Редактировать");
+        stockEditButton.setEnabled(false);
         stockEditButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stockEditButtonActionPerformed(evt);
@@ -801,6 +842,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         stockDeleteButton.setText("Удалить");
+        stockDeleteButton.setEnabled(false);
         stockDeleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stockDeleteButtonActionPerformed(evt);
@@ -981,7 +1023,6 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void openCustomersTableItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openCustomersTableItemActionPerformed
-        // TODO add your handling code here:
         JFileChooser fc = new JFileChooser();
         class MyTxtFilter extends FileFilter {
 
@@ -1001,11 +1042,13 @@ public class Main extends javax.swing.JFrame {
             return;
         }
         cusPath = fc.getSelectedFile();
+        cP = true;
+        custEditButton.setEnabled(true);
+        custDeleteButton.setEnabled(true);
         fillTable(cusPath, custColNames, customersTable);
     }//GEN-LAST:event_openCustomersTableItemActionPerformed
 
     private void openEmployeesTableMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openEmployeesTableMenuItemActionPerformed
-        // TODO add your handling code here:
         JFileChooser fc = new JFileChooser();
         class MyTxtFilter extends FileFilter {
 
@@ -1025,11 +1068,13 @@ public class Main extends javax.swing.JFrame {
             return;
         }
         File empPath = fc.getSelectedFile();
+        eP = true;
+        empEditButton.setEnabled(true);
+        empDeleteButton.setEnabled(true);
         fillTable(empPath, empColNames, employeesTable);
     }//GEN-LAST:event_openEmployeesTableMenuItemActionPerformed
 
     private void openStockMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openStockMenuItemActionPerformed
-        // TODO add your handling code here:
         JFileChooser fc = new JFileChooser();
         class MyTxtFilter extends FileFilter {
 
@@ -1049,6 +1094,9 @@ public class Main extends javax.swing.JFrame {
             return;
         }
         stockPath = fc.getSelectedFile();
+        stP = true;
+        stockEditButton.setEnabled(true);
+        stockDeleteButton.setEnabled(true);
         fillTable(stockPath, stockColNames, stockTable);
     }//GEN-LAST:event_openStockMenuItemActionPerformed
 
@@ -1072,6 +1120,9 @@ public class Main extends javax.swing.JFrame {
             return;
         }
         goodsPath = fc.getSelectedFile();
+        gP = true;
+        goodsEditButton.setEnabled(true);
+        goodsDeleteButton.setEnabled(true);
         fillTable(goodsPath, goodsColNames, goodsTable);
     }//GEN-LAST:event_openGoodsTableMenuItemActionPerformed
 
@@ -1108,6 +1159,9 @@ public class Main extends javax.swing.JFrame {
             return;
         }
         posPath = fc.getSelectedFile();
+        pP = true;
+        posEditButton.setEnabled(true);
+        posDeleteButton.setEnabled(true);
         fillTable(posPath, posColNames, positionsTable);
     }//GEN-LAST:event_openPositionsMenuItemActionPerformed
 
@@ -1131,6 +1185,9 @@ public class Main extends javax.swing.JFrame {
             return;
         }
         supPath = fc.getSelectedFile();
+        suP = true;
+        supEditButton.setEnabled(true);
+        supDeleteButton.setEnabled(true);
         fillTable(supPath, supColNames, suppliersTable);
     }//GEN-LAST:event_openSuppliersMenuItemActionPerformed
 
@@ -1154,6 +1211,9 @@ public class Main extends javax.swing.JFrame {
             return;
         }
         togPath = fc.getSelectedFile();
+        tP = true;
+        togEditButton.setEnabled(true);
+        togDeleteButton.setEnabled(true);
         fillTable(togPath, togColNames, togTable);
     }//GEN-LAST:event_openTOGMenuItemActionPerformed
 
@@ -1210,6 +1270,16 @@ public class Main extends javax.swing.JFrame {
     private void goodsAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goodsAddButtonActionPerformed
         GoodsOperationDialog ad = new GoodsOperationDialog(this, true, new Vector());
         ad.setVisible(true);
+        if (gP == false) {
+            try {
+                goodsPath = new File("goods.txt");
+                goodsPath.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            goodsEditButton.setEnabled(true);
+            goodsDeleteButton.setEnabled(true);
+        }
         if (!ad.get().isEmpty()) {
             add(goodsPath, ad.get());
             fillTable(goodsPath, goodsColNames, goodsTable);
@@ -1238,6 +1308,16 @@ public class Main extends javax.swing.JFrame {
     private void posAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posAddButtonActionPerformed
         PosOperationDialog ad = new PosOperationDialog(this, true, new Vector());
         ad.setVisible(true);
+        if (pP == false) {
+            try {
+                posPath = new File("positions.txt");
+                posPath.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            posEditButton.setEnabled(true);
+            posDeleteButton.setEnabled(true);
+        }
         if (!ad.get().isEmpty()) {
             add(posPath, ad.get());
             fillTable(posPath, posColNames, positionsTable);
@@ -1266,6 +1346,17 @@ public class Main extends javax.swing.JFrame {
     private void empAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empAddButtonActionPerformed
         EmpOperationDialog ad = new EmpOperationDialog(this, true, new Vector());
         ad.setVisible(true);
+        if (eP == false) {
+            try {
+                empPath = new File("employees.txt");
+                empPath.createNewFile();
+                
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            empEditButton.setEnabled(true);
+            empDeleteButton.setEnabled(true);
+        }
         if (!ad.get().isEmpty()) {
             add(empPath, ad.get());
             fillTable(empPath, empColNames, employeesTable);
@@ -1278,6 +1369,16 @@ public class Main extends javax.swing.JFrame {
     private void togAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togAddButtonActionPerformed
         TogOperationDialog ad = new TogOperationDialog(this, true, new Vector());
         ad.setVisible(true);
+        if (tP == false) {
+            try {
+                togPath = new File("types_of_goods.txt");
+                togPath.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            togEditButton.setEnabled(true);
+            togDeleteButton.setEnabled(true);
+        }
         if (!ad.get().isEmpty()) {
             add(togPath, ad.get());
             fillTable(togPath, togColNames, togTable);
@@ -1306,6 +1407,16 @@ public class Main extends javax.swing.JFrame {
     private void supAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supAddButtonActionPerformed
         SupOperationDialog ad = new SupOperationDialog(this, true, new Vector());
         ad.setVisible(true);
+        if (suP == false) {
+            try {
+                supPath = new File("suppliers.txt");
+                supPath.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            supEditButton.setEnabled(true);
+            supDeleteButton.setEnabled(true);
+        }
         if (!ad.get().isEmpty()) {
             add(supPath, ad.get());
             fillTable(supPath, supColNames, suppliersTable);
@@ -1334,6 +1445,16 @@ public class Main extends javax.swing.JFrame {
     private void custAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custAddButtonActionPerformed
         CustOperationDialog ad = new CustOperationDialog(this, true, new Vector());
         ad.setVisible(true);
+        if (cP == false) {
+            try {
+                cusPath = new File("customers.txt");
+                cusPath.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            custEditButton.setEnabled(true);
+            custDeleteButton.setEnabled(true);
+        }
         if (!ad.get().isEmpty()) {
             add(cusPath, ad.get());
             fillTable(cusPath, custColNames, customersTable);
@@ -1362,6 +1483,16 @@ public class Main extends javax.swing.JFrame {
     private void stockAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockAddButtonActionPerformed
         StockOperationDialog ad = new StockOperationDialog(this, true, new Vector());
         ad.setVisible(true);
+        if (stP == false) {
+            try {
+                stockPath = new File("stock.txt");
+                stockPath.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            stockEditButton.setEnabled(true);
+            stockDeleteButton.setEnabled(true);
+        }
         if (!ad.get().isEmpty()) {
             add(stockPath, ad.get());
             fillTable(stockPath, stockColNames, stockTable);
@@ -1389,6 +1520,7 @@ public class Main extends javax.swing.JFrame {
 
     private void empDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empDeleteButtonActionPerformed
         if (rowIndex != -1) {
+            System.out.println(empPath);
             delete(empPath, rowIndex);
             fillTable(empPath, empColNames, employeesTable);
         }
@@ -1509,16 +1641,16 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void fillTable(File f, Vector<String> thisColNames, javax.swing.JTable table) {
-        InputStreamReader ir = null;
+        InputStreamReader ir;
         BufferedReader br = null;
+        Vector data = new Vector();
         try {
             ir = new InputStreamReader(new FileInputStream(f), "UTF8");
             br = new BufferedReader(ir);
             String buf;
-            Vector data = new Vector();
             Vector row;
             while ((buf = br.readLine()) != null) {
-                if (buf.equals("")) {
+                if (buf.trim().equals("")) {
                     continue;
                 }
                 String[] sa = buf.split(";");
@@ -1534,6 +1666,7 @@ public class Main extends javax.swing.JFrame {
         } finally {
             try {
                 br.close();
+                table.setModel(new DefaultTableModel(data, thisColNames));
             } catch (IOException ex) {
                 System.out.println(ex);
             }
@@ -1582,20 +1715,25 @@ public class Main extends javax.swing.JFrame {
         }
     }
 
-    public void delete(File path, int rowIndex) {
+    private void delete(File path, int rowIndex) {
         Scanner sc;
-        int counter = 0;
         StringBuilder newFile = new StringBuilder();
         try {
             sc = new Scanner(path, "UTF-8");
-            while (sc.hasNextLine()) {
+            String temp;
+            int counter = 0;
+            while ((sc.hasNextLine())) {
+                temp = sc.nextLine();
+                if (temp.equals("")) {
+                    continue;
+                }
                 System.out.println(counter);
                 if (counter == rowIndex) {
                     if (sc.hasNextLine()) {
-                        System.out.println(sc.nextLine());
+                        rowIndex = -1;
                     }
                 } else {
-                    newFile.append(sc.nextLine());
+                    newFile.append(temp);
                     newFile.append("\n");
                 }
                 counter++;
@@ -1606,7 +1744,6 @@ public class Main extends javax.swing.JFrame {
 
         try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path, false), StandardCharsets.UTF_8))) {
             bw.write(newFile.toString());
-            bw.close();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
